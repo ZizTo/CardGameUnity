@@ -1,4 +1,4 @@
 # Unity card game
 
 
-test builds are in folder [builds](builds)
+test builds for unity are in folder [builds](builds)
