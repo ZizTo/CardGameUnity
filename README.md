@@ -1,4 +1,4 @@
 # Unity card game
 
 
-test builds for unity are in folder [builds](builds)
+Пошаговая карточная игра на движке Unity. Билжы для windows доступны [builds](тут)
