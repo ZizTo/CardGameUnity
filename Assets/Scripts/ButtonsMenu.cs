@@ -19,14 +19,14 @@ public class ButtonsMenu : MonoBehaviour
 
     private void Start()
     {
-        /*pbTransform = pButton.transform.position;
+        pbTransform = pButton.transform.position;
         sbTransform = sButton.transform.position;
         ebTransform = eButton.transform.position;
         pTransform = panel.transform.position;
         pbTransformN = pbTransform;
         ebTransformN = ebTransform;
         sbTransformN = sbTransform;
-        pTransformN = pTransform;*/
+        pTransformN = pTransform;
 
         if(PlayerPrefs.HasKey("Quality"))
         {

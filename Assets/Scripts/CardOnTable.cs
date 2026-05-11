@@ -28,7 +28,7 @@ public class CardOnTable : MonoBehaviour
     {
         lineRenderer = GetComponent<LineRenderer>();
         thisPos = transform.position;
-        if (gameObject.name == "Enemy") { HP += PlayerPrefs.GetInt("Diffic") * 10; }
+        //if (gameObject.name == "Enemy") { HP += PlayerPrefs.GetInt("Diffic") * 10; }
         if (manaT != null) { manaT.text = "" + Mana; }
         if (dmgT != null) { dmgT.text = "" + Damage; }
         if (hpT != null) { hpT.text = "" + HP; }
