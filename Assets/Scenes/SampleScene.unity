@@ -892,18 +892,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yourOrd: 0
+  orderKol: 0
+  maxMana: 5
   yourHolder: {fileID: 2019670756}
   yourPlc: {fileID: 1720393379}
   enemyHolder: {fileID: 1186489026}
   enemyPlc: {fileID: 310932829}
   ChangeOrderButton: {fileID: 939784655}
-  orderKol: 0
-  maxMana: 5
-  manaYou: 0
-  manaEnemy: 0
   manaYouT: {fileID: 650579653}
   manaEnemyT: {fileID: 271439234}
   timeT: {fileID: 1904720965}
+  manaYou: 0
+  manaEnemy: 0
+  enemyAiProfile:
+    aiType: 0
+    minimaxDepth: 2
+    mctsIterations: 100
+    rolloutDepth: 6
+    useAlphaBeta: 1
+    timeLimitMs: 0
+    useMoveOrdering: 1
+    useIterativeDeepening: 0
+    useTranspositionTable: 0
+    useQuiescence: 0
+    usePvs: 0
+    useExpectimax: 0
+    quiescenceDepth: 3
+    pimcSamples: 0
+    pimcSeed: 12345
+    maxBranching: 6
+    maxActionsPerTurn: 4
 --- !u!82 &519420034
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1689,7 +1707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d7cfcc4924beec48aa25a2fda51da49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 20
   Damage: 0
   Mana: 0
   Name: You
@@ -1975,7 +1993,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d7cfcc4924beec48aa25a2fda51da49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 20
   Damage: 0
   Mana: 0
   Name: Enemy
@@ -3539,7 +3557,6 @@ MonoBehaviour:
   - {fileID: 5844524819259804785, guid: 32065a2950eb38f4d8b0e356d37b27fc, type: 3}
   - {fileID: 5844524819259804785, guid: 32065a2950eb38f4d8b0e356d37b27fc, type: 3}
   - {fileID: 5844524819259804785, guid: 32065a2950eb38f4d8b0e356d37b27fc, type: 3}
-  - {fileID: 5844524819259804785, guid: 32065a2950eb38f4d8b0e356d37b27fc, type: 3}
   - {fileID: 5844524819259804785, guid: 58d9d01191f222a4694f0ea8158586a7, type: 3}
   - {fileID: 5844524819259804785, guid: 58d9d01191f222a4694f0ea8158586a7, type: 3}
   - {fileID: 5844524819259804785, guid: 58d9d01191f222a4694f0ea8158586a7, type: 3}
@@ -3547,6 +3564,7 @@ MonoBehaviour:
   - {fileID: 5844524819259804785, guid: 1a387749d7bb2d441bfaa7a09ca9f47b, type: 3}
   - {fileID: 5844524819259804785, guid: 1a387749d7bb2d441bfaa7a09ca9f47b, type: 3}
   - {fileID: 5844524819259804785, guid: c575daa6241676f4e8ff734df7ae463a, type: 3}
+  - {fileID: 5844524819259804785, guid: 32065a2950eb38f4d8b0e356d37b27fc, type: 3}
 --- !u!4 &2025408165 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5738028567797301108, guid: e544c6a00c458fd45bb6200ae0f1f938, type: 3}

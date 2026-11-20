@@ -27,7 +27,7 @@ public static class AIBenchmarkRunner
     {
         // Полный round-robin дорогой: 12 профилей дают 66 пар.
         // Начинайте с 2 партий на пару, чтобы оценить время.
-        RunInEditor(BenchmarkMode.RoundRobin, 2, 12345);
+        RunInEditor(BenchmarkMode.RoundRobin, 10, 12348);
     }
 
     private static void RunInEditor(BenchmarkMode mode, int matches, int seed)

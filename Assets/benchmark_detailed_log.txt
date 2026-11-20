@@ -1,0 +1,624 @@
+Testing Rule-Based vs Minimax α-β D=2
+Match 1: Rule-Based vs Minimax α-β D=2
+  Winner: Minimax α-β D=2
+  Turns: 46
+
+Match 2: Rule-Based vs Minimax α-β D=2
+  Winner: Rule-Based
+  Turns: 80
+
+Match 3: Rule-Based vs Minimax α-β D=2
+  Winner: Draw
+  Turns: 100
+
+Match 4: Rule-Based vs Minimax α-β D=2
+  Winner: Rule-Based
+  Turns: 72
+
+Match 5: Rule-Based vs Minimax α-β D=2
+  Winner: Minimax α-β D=2
+  Turns: 64
+
+Match 6: Rule-Based vs Minimax α-β D=2
+  Winner: Minimax α-β D=2
+  Turns: 70
+
+Match 7: Rule-Based vs Minimax α-β D=2
+  Winner: Minimax α-β D=2
+  Turns: 53
+
+Match 8: Rule-Based vs Minimax α-β D=2
+  Winner: Minimax α-β D=2
+  Turns: 70
+
+Match 9: Rule-Based vs Minimax α-β D=2
+  Winner: Minimax α-β D=2
+  Turns: 54
+
+Match 10: Rule-Based vs Minimax α-β D=2
+  Winner: Minimax α-β D=2
+  Turns: 71
+
+Match 11: Rule-Based vs Minimax α-β D=2
+  Winner: Minimax α-β D=2
+  Turns: 53
+
+Match 12: Rule-Based vs Minimax α-β D=2
+  Winner: Minimax α-β D=2
+  Turns: 81
+
+Match 13: Rule-Based vs Minimax α-β D=2
+  Winner: Minimax α-β D=2
+  Turns: 78
+
+Match 14: Rule-Based vs Minimax α-β D=2
+  Winner: Minimax α-β D=2
+  Turns: 75
+
+Match 15: Rule-Based vs Minimax α-β D=2
+  Winner: Minimax α-β D=2
+  Turns: 46
+
+Match 16: Rule-Based vs Minimax α-β D=2
+  Winner: Minimax α-β D=2
+  Turns: 99
+
+Match 17: Rule-Based vs Minimax α-β D=2
+  Winner: Minimax α-β D=2
+  Turns: 65
+
+Match 18: Rule-Based vs Minimax α-β D=2
+  Winner: Draw
+  Turns: 100
+
+Match 19: Rule-Based vs Minimax α-β D=2
+  Winner: Minimax α-β D=2
+  Turns: 46
+
+Match 20: Rule-Based vs Minimax α-β D=2
+  Winner: Minimax α-β D=2
+  Turns: 78
+
+Match 21: Rule-Based vs Minimax α-β D=2
+  Winner: Minimax α-β D=2
+  Turns: 47
+
+Match 22: Rule-Based vs Minimax α-β D=2
+  Winner: Minimax α-β D=2
+  Turns: 81
+
+Match 23: Rule-Based vs Minimax α-β D=2
+  Winner: Minimax α-β D=2
+  Turns: 53
+
+Match 24: Rule-Based vs Minimax α-β D=2
+  Winner: Minimax α-β D=2
+  Turns: 61
+
+Match 25: Rule-Based vs Minimax α-β D=2
+  Winner: Minimax α-β D=2
+  Turns: 71
+
+Match 26: Rule-Based vs Minimax α-β D=2
+  Winner: Draw
+  Turns: 100
+
+Match 27: Rule-Based vs Minimax α-β D=2
+  Winner: Minimax α-β D=2
+  Turns: 53
+
+Match 28: Rule-Based vs Minimax α-β D=2
+  Winner: Minimax α-β D=2
+  Turns: 50
+
+Match 29: Rule-Based vs Minimax α-β D=2
+  Winner: Rule-Based
+  Turns: 85
+
+Match 30: Rule-Based vs Minimax α-β D=2
+  Winner: Rule-Based
+  Turns: 68
+
+Match 31: Rule-Based vs Minimax α-β D=2
+  Winner: Minimax α-β D=2
+  Turns: 68
+
+Match 32: Rule-Based vs Minimax α-β D=2
+  Winner: Minimax α-β D=2
+  Turns: 73
+
+Match 33: Rule-Based vs Minimax α-β D=2
+  Winner: Minimax α-β D=2
+  Turns: 65
+
+Match 34: Rule-Based vs Minimax α-β D=2
+  Winner: Minimax α-β D=2
+  Turns: 75
+
+Match 35: Rule-Based vs Minimax α-β D=2
+  Winner: Minimax α-β D=2
+  Turns: 47
+
+Match 36: Rule-Based vs Minimax α-β D=2
+  Winner: Draw
+  Turns: 100
+
+Match 37: Rule-Based vs Minimax α-β D=2
+  Winner: Rule-Based
+  Turns: 84
+
+Match 38: Rule-Based vs Minimax α-β D=2
+  Winner: Draw
+  Turns: 100
+
+Match 39: Rule-Based vs Minimax α-β D=2
+  Winner: Draw
+  Turns: 100
+
+Match 40: Rule-Based vs Minimax α-β D=2
+  Winner: Minimax α-β D=2
+  Turns: 62
+
+Match 41: Rule-Based vs Minimax α-β D=2
+  Winner: Minimax α-β D=2
+  Turns: 62
+
+Match 42: Rule-Based vs Minimax α-β D=2
+  Winner: Minimax α-β D=2
+  Turns: 74
+
+Match 43: Rule-Based vs Minimax α-β D=2
+  Winner: Minimax α-β D=2
+  Turns: 65
+
+Match 44: Rule-Based vs Minimax α-β D=2
+  Winner: Draw
+  Turns: 100
+
+Match 45: Rule-Based vs Minimax α-β D=2
+  Winner: Minimax α-β D=2
+  Turns: 65
+
+Match 46: Rule-Based vs Minimax α-β D=2
+  Winner: Rule-Based
+  Turns: 74
+
+Match 47: Rule-Based vs Minimax α-β D=2
+  Winner: Minimax α-β D=2
+  Turns: 67
+
+Match 48: Rule-Based vs Minimax α-β D=2
+  Winner: Draw
+  Turns: 100
+
+Match 49: Rule-Based vs Minimax α-β D=2
+  Winner: Minimax α-β D=2
+  Turns: 48
+
+Match 50: Rule-Based vs Minimax α-β D=2
+  Winner: Minimax α-β D=2
+  Turns: 72
+
+Testing Rule-Based vs MCTS 1000 iter
+Match 1: Rule-Based vs MCTS 1000 iter
+  Winner: Rule-Based
+  Turns: 20
+
+Match 2: Rule-Based vs MCTS 1000 iter
+  Winner: MCTS 1000 iter
+  Turns: 75
+
+Match 3: Rule-Based vs MCTS 1000 iter
+  Winner: Rule-Based
+  Turns: 25
+
+Match 4: Rule-Based vs MCTS 1000 iter
+  Winner: MCTS 1000 iter
+  Turns: 71
+
+Match 5: Rule-Based vs MCTS 1000 iter
+  Winner: Rule-Based
+  Turns: 27
+
+Match 6: Rule-Based vs MCTS 1000 iter
+  Winner: MCTS 1000 iter
+  Turns: 88
+
+Match 7: Rule-Based vs MCTS 1000 iter
+  Winner: Rule-Based
+  Turns: 25
+
+Match 8: Rule-Based vs MCTS 1000 iter
+  Winner: MCTS 1000 iter
+  Turns: 65
+
+Match 9: Rule-Based vs MCTS 1000 iter
+  Winner: Rule-Based
+  Turns: 27
+
+Match 10: Rule-Based vs MCTS 1000 iter
+  Winner: MCTS 1000 iter
+  Turns: 59
+
+Match 11: Rule-Based vs MCTS 1000 iter
+  Winner: Rule-Based
+  Turns: 20
+
+Match 12: Rule-Based vs MCTS 1000 iter
+  Winner: MCTS 1000 iter
+  Turns: 85
+
+Match 13: Rule-Based vs MCTS 1000 iter
+  Winner: Rule-Based
+  Turns: 25
+
+Match 14: Rule-Based vs MCTS 1000 iter
+  Winner: MCTS 1000 iter
+  Turns: 72
+
+Match 15: Rule-Based vs MCTS 1000 iter
+  Winner: Rule-Based
+  Turns: 27
+
+Match 16: Rule-Based vs MCTS 1000 iter
+  Winner: MCTS 1000 iter
+  Turns: 67
+
+Match 17: Rule-Based vs MCTS 1000 iter
+  Winner: Rule-Based
+  Turns: 27
+
+Match 18: Rule-Based vs MCTS 1000 iter
+  Winner: MCTS 1000 iter
+  Turns: 68
+
+Match 19: Rule-Based vs MCTS 1000 iter
+  Winner: Rule-Based
+  Turns: 39
+
+Match 20: Rule-Based vs MCTS 1000 iter
+  Winner: MCTS 1000 iter
+  Turns: 78
+
+Match 21: Rule-Based vs MCTS 1000 iter
+  Winner: Rule-Based
+  Turns: 27
+
+Match 22: Rule-Based vs MCTS 1000 iter
+  Winner: MCTS 1000 iter
+  Turns: 62
+
+Match 23: Rule-Based vs MCTS 1000 iter
+  Winner: Rule-Based
+  Turns: 22
+
+Match 24: Rule-Based vs MCTS 1000 iter
+  Winner: Draw
+  Turns: 100
+
+Match 25: Rule-Based vs MCTS 1000 iter
+  Winner: Rule-Based
+  Turns: 27
+
+Match 26: Rule-Based vs MCTS 1000 iter
+  Winner: MCTS 1000 iter
+  Turns: 48
+
+Match 27: Rule-Based vs MCTS 1000 iter
+  Winner: Rule-Based
+  Turns: 22
+
+Match 28: Rule-Based vs MCTS 1000 iter
+  Winner: MCTS 1000 iter
+  Turns: 55
+
+Match 29: Rule-Based vs MCTS 1000 iter
+  Winner: Rule-Based
+  Turns: 25
+
+Match 30: Rule-Based vs MCTS 1000 iter
+  Winner: Rule-Based
+  Turns: 77
+
+Match 31: Rule-Based vs MCTS 1000 iter
+  Winner: Rule-Based
+  Turns: 25
+
+Match 32: Rule-Based vs MCTS 1000 iter
+  Winner: MCTS 1000 iter
+  Turns: 70
+
+Match 33: Rule-Based vs MCTS 1000 iter
+  Winner: Rule-Based
+  Turns: 27
+
+Match 34: Rule-Based vs MCTS 1000 iter
+  Winner: MCTS 1000 iter
+  Turns: 69
+
+Match 35: Rule-Based vs MCTS 1000 iter
+  Winner: Rule-Based
+  Turns: 27
+
+Match 36: Rule-Based vs MCTS 1000 iter
+  Winner: MCTS 1000 iter
+  Turns: 66
+
+Match 37: Rule-Based vs MCTS 1000 iter
+  Winner: Rule-Based
+  Turns: 20
+
+Match 38: Rule-Based vs MCTS 1000 iter
+  Winner: MCTS 1000 iter
+  Turns: 76
+
+Match 39: Rule-Based vs MCTS 1000 iter
+  Winner: Rule-Based
+  Turns: 27
+
+Match 40: Rule-Based vs MCTS 1000 iter
+  Winner: Rule-Based
+  Turns: 76
+
+Match 41: Rule-Based vs MCTS 1000 iter
+  Winner: Rule-Based
+  Turns: 21
+
+Match 42: Rule-Based vs MCTS 1000 iter
+  Winner: MCTS 1000 iter
+  Turns: 65
+
+Match 43: Rule-Based vs MCTS 1000 iter
+  Winner: Rule-Based
+  Turns: 27
+
+Match 44: Rule-Based vs MCTS 1000 iter
+  Winner: MCTS 1000 iter
+  Turns: 63
+
+Match 45: Rule-Based vs MCTS 1000 iter
+  Winner: Rule-Based
+  Turns: 27
+
+Match 46: Rule-Based vs MCTS 1000 iter
+  Winner: MCTS 1000 iter
+  Turns: 81
+
+Match 47: Rule-Based vs MCTS 1000 iter
+  Winner: Rule-Based
+  Turns: 27
+
+Match 48: Rule-Based vs MCTS 1000 iter
+  Winner: MCTS 1000 iter
+  Turns: 71
+
+Match 49: Rule-Based vs MCTS 1000 iter
+  Winner: Rule-Based
+  Turns: 27
+
+Match 50: Rule-Based vs MCTS 1000 iter
+  Winner: MCTS 1000 iter
+  Turns: 79
+
+Testing Minimax α-β D=2 vs MCTS 1000 iter
+Match 1: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 20
+
+Match 2: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 47
+
+Match 3: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 20
+
+Match 4: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 53
+
+Match 5: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 27
+
+Match 6: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 48
+
+Match 7: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 22
+
+Match 8: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 45
+
+Match 9: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 21
+
+Match 10: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: MCTS 1000 iter
+  Turns: 79
+
+Match 11: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 21
+
+Match 12: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 46
+
+Match 13: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 20
+
+Match 14: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: MCTS 1000 iter
+  Turns: 80
+
+Match 15: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 21
+
+Match 16: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: MCTS 1000 iter
+  Turns: 36
+
+Match 17: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 21
+
+Match 18: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 66
+
+Match 19: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 22
+
+Match 20: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: MCTS 1000 iter
+  Turns: 52
+
+Match 21: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 20
+
+Match 22: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 52
+
+Match 23: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 22
+
+Match 24: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 53
+
+Match 25: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 27
+
+Match 26: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: MCTS 1000 iter
+  Turns: 66
+
+Match 27: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 21
+
+Match 28: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 50
+
+Match 29: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 21
+
+Match 30: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 54
+
+Match 31: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 21
+
+Match 32: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: MCTS 1000 iter
+  Turns: 51
+
+Match 33: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 22
+
+Match 34: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 51
+
+Match 35: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 21
+
+Match 36: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 39
+
+Match 37: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 27
+
+Match 38: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: MCTS 1000 iter
+  Turns: 73
+
+Match 39: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 22
+
+Match 40: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: MCTS 1000 iter
+  Turns: 69
+
+Match 41: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 21
+
+Match 42: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 47
+
+Match 43: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 21
+
+Match 44: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 55
+
+Match 45: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 27
+
+Match 46: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 70
+
+Match 47: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 21
+
+Match 48: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 38
+
+Match 49: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 20
+
+Match 50: Minimax α-β D=2 vs MCTS 1000 iter
+  Winner: Minimax α-β D=2
+  Turns: 62
+
+
+=== BENCHMARK RESULTS ===
+
+Rule-Based vs Minimax α-β D=2:
+  Wins: 6-36 (Draws: 8)
+  Win Rate: 12,0% vs 72,0%
+  Avg Turn Time: 0,0ms vs 116,3ms
+  Errors/Turn: 0,000 vs 0,000
+
+Rule-Based vs MCTS 1000 iter:
+  Wins: 27-22 (Draws: 1)
+  Win Rate: 54,0% vs 44,0%
+  Avg Turn Time: 0,0ms vs 117,1ms
+  Errors/Turn: 0,000 vs 0,000
+
+Minimax α-β D=2 vs MCTS 1000 iter:
+  Wins: 42-8 (Draws: 0)
+  Win Rate: 84,0% vs 16,0%
+  Avg Turn Time: 259,4ms vs 130,0ms
+  Errors/Turn: 0,000 vs 0,000
+

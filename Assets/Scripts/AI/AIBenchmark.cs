@@ -286,6 +286,9 @@ public class AIBenchmark : MonoBehaviour
         list.Add(new ProfileEntry("Minimax α-β + ID (100 мс)", "AB-ID", AiProfileFactory.IterativeDeepening(4, 100)));
         list.Add(new ProfileEntry("Minimax α-β + TT D=3", "AB-TT-D3", AiProfileFactory.Transposition(3)));
         list.Add(new ProfileEntry("Minimax α-β + quiescence D=2", "AB-Q-D2", AiProfileFactory.Quiescence(2)));
+        list.Add(new ProfileEntry("Minimax α-β + quiescence D=4", "AB-Q-D4", AiProfileFactory.Quiescence(4)));
+        list.Add(new ProfileEntry("Minimax α-β noSort + quiescence D=4", "AB-NO-Q-D4", AiProfileFactory.QuiescenceNoSort(4)));
+        //list.Add(new ProfileEntry("Minimax α-β + quiescence D=5", "AB-Q-D5", AiProfileFactory.Quiescence(5)));
         list.Add(new ProfileEntry("Minimax α-β + PVS D=3", "AB-PVS-D3", AiProfileFactory.Pvs(3)));
         list.Add(new ProfileEntry("Expectimax D=2", "EXP-D2", AiProfileFactory.Expectimax(2)));
         list.Add(new ProfileEntry("PIMC D=2 (6 детерминизаций)", "PIMC-D2", AiProfileFactory.Pimc(2, 6)));
