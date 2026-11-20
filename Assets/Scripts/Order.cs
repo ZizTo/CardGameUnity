@@ -454,6 +454,8 @@ private SimGameState BuildStateFromScene()
     }
 
     state.isMyTurn = true;
+    // ИИ играет за противника: его ход — второй в раунде.
+    state.turnInRound = 1;
     return state;
 }
 

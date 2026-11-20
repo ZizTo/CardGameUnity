@@ -3,7 +3,12 @@ using UnityEngine;
 
 public static class SimRules
 {
-    public static void ApplyAction(SimGameState state, SimAction action, bool randomDraw = false)
+    /// <summary>
+    /// Применяет действие к состоянию.
+    /// forcedDrawIndex используется алгоритмом Expectimax: он позволяет
+    /// подставить конкретную карту добора вместо случайной/верхней.
+    /// </summary>
+    public static void ApplyAction(SimGameState state, SimAction action, bool randomDraw = false, int forcedDrawIndex = -1)
     {
         switch (action.actionType)
         {
@@ -61,20 +66,26 @@ public static class SimRules
 
             case SimActionType.EndTurn:
             {
-                EndTurn(state, randomDraw);
+                EndTurn(state, randomDraw, forcedDrawIndex);
                 break;
             }
         }
     }
 
-    public static void EndTurn(SimGameState state, bool randomDraw)
+    public static void EndTurn(SimGameState state, bool randomDraw, int forcedDrawIndex = -1)
     {
         var temp = state.me;
         state.me = state.enemy;
         state.enemy = temp;
         state.isMyTurn = !state.isMyTurn;
 
-        state.orderKol++;
+        // Номер раунда увеличивается, когда ход возвращается к первому игроку
+        // раунда. Так оба игрока в одном раунде получают одинаковое количество
+        // маны, как в игровом цикле Unity.
+        state.turnInRound = 1 - state.turnInRound;
+        if (state.turnInRound == 0)
+            state.orderKol++;
+
         int manaForTurn = state.orderKol > state.maxManaCap ? state.maxManaCap : state.orderKol;
 
         state.me.maxMana = manaForTurn;
@@ -88,26 +99,35 @@ public static class SimRules
 
         if (state.me.deck.Count > 0 && state.me.hand.Count < 7)
         {
-            SimCard drawn = randomDraw ? DrawCardRandom(state.me) : DrawCardDeterministic(state.me);
+            SimCard drawn;
+            if (forcedDrawIndex >= 0 && forcedDrawIndex < state.me.deck.Count)
+                drawn = DrawCardAt(state.me, forcedDrawIndex);
+            else if (randomDraw)
+                drawn = DrawCardRandom(state.me);
+            else
+                drawn = DrawCardDeterministic(state.me);
+
             state.me.hand.Add(drawn);
         }
     }
 
-    private static SimCard DrawCardDeterministic(SimPlayerState player)
+    private static SimCard DrawCardAt(SimPlayerState player, int index)
     {
-        SimCard card = player.deck[0];
-        player.deck.RemoveAt(0);
+        SimCard card = player.deck[index];
+        player.deck.RemoveAt(index);
         card.canAttack = false;
         return card;
+    }
+
+    private static SimCard DrawCardDeterministic(SimPlayerState player)
+    {
+        return DrawCardAt(player, 0);
     }
 
     private static SimCard DrawCardRandom(SimPlayerState player)
     {
         int index = Random.Range(0, player.deck.Count);
-        SimCard card = player.deck[index];
-        player.deck.RemoveAt(index);
-        card.canAttack = false;
-        return card;
+        return DrawCardAt(player, index);
     }
 
     public static bool IsTerminal(SimGameState state)
