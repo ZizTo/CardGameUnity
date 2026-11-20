@@ -1,0 +1,883 @@
+﻿=== AI BENCHMARK STARTED ===
+Mode: RoundRobin
+Matches per pair: 10
+Max actions per match: 400
+Max seconds per match: 30.0
+Random seed: 123451
+
+Profiles:
+  [0] Rule-Based (Rule)
+  [1] Minimax без отсечения D=2 (MM-D2)
+  [2] Minimax α-β D=2 (AB-D2)
+  [3] Minimax α-β D=3 (AB-D3)
+  [4] Minimax α-β без сортировки D=3 (AB-NO-D3)
+  [5] Minimax α-β + ID (100 мс) (AB-ID)
+  [6] Minimax α-β + TT D=3 (AB-TT-D3)
+  [7] Minimax α-β + quiescence D=2 (AB-Q-D2)
+  [8] Minimax α-β + quiescence D=4 (AB-Q-D2)
+  [9] Minimax α-β + PVS D=3 (AB-PVS-D3)
+  [10] Expectimax D=2 (EXP-D2)
+  [11] PIMC D=2 (6 детерминизаций) (PIMC-D2)
+  [12] MCTS 300 итераций (MCTS-300)
+
+Pairs to play: 78
+
+--- Pair 1: Rule vs MM-D2 ---
+  match 1/10 first=Rule winner=MM-D2 actions=400 time=0.0s TIEBREAK
+  match 2/10 first=MM-D2 winner=MM-D2 actions=44 time=0.1s
+  match 3/10 first=Rule winner=MM-D2 actions=86 time=0.1s
+  match 4/10 first=MM-D2 winner=MM-D2 actions=54 time=0.1s
+  match 5/10 first=Rule winner=Rule actions=77 time=0.0s
+  match 6/10 first=MM-D2 winner=MM-D2 actions=47 time=0.1s
+  match 7/10 first=Rule winner=MM-D2 actions=85 time=0.1s
+  match 8/10 first=MM-D2 winner=MM-D2 actions=55 time=0.1s
+  match 9/10 first=Rule winner=MM-D2 actions=123 time=0.1s
+  match 10/10 first=MM-D2 winner=MM-D2 actions=41 time=0.0s
+--- Pair 2: Rule vs AB-D2 ---
+  match 1/10 first=Rule winner=AB-D2 actions=104 time=0.0s
+  match 2/10 first=AB-D2 winner=AB-D2 actions=42 time=0.0s
+  match 3/10 first=Rule winner=AB-D2 actions=63 time=0.0s
+  match 4/10 first=AB-D2 winner=AB-D2 actions=39 time=0.0s
+  match 5/10 first=Rule winner=AB-D2 actions=400 time=0.0s TIEBREAK
+  match 6/10 first=AB-D2 winner=AB-D2 actions=46 time=0.0s
+  match 7/10 first=Rule winner=Rule actions=84 time=0.0s
+  match 8/10 first=AB-D2 winner=AB-D2 actions=400 time=0.0s TIEBREAK
+  match 9/10 first=Rule winner=AB-D2 actions=64 time=0.0s
+  match 10/10 first=AB-D2 winner=Rule actions=75 time=0.0s
+--- Pair 3: Rule vs AB-D3 ---
+  match 1/10 first=Rule winner=AB-D3 actions=64 time=0.1s
+  match 2/10 first=AB-D3 winner=AB-D3 actions=400 time=0.1s TIEBREAK
+  match 3/10 first=Rule winner=AB-D3 actions=69 time=0.1s
+  match 4/10 first=AB-D3 winner=AB-D3 actions=59 time=0.2s
+  match 5/10 first=Rule winner=AB-D3 actions=72 time=0.1s
+  match 6/10 first=AB-D3 winner=Rule actions=81 time=0.1s
+  match 7/10 first=Rule winner=AB-D3 actions=400 time=0.0s TIEBREAK
+  match 8/10 first=AB-D3 winner=AB-D3 actions=45 time=0.2s
+  match 9/10 first=Rule winner=AB-D3 actions=68 time=0.1s
+  match 10/10 first=AB-D3 winner=Rule actions=108 time=0.0s
+--- Pair 4: Rule vs AB-NO-D3 ---
+  match 1/10 first=Rule winner=AB-NO-D3 actions=400 time=0.1s TIEBREAK
+  match 2/10 first=AB-NO-D3 winner=AB-NO-D3 actions=69 time=0.1s
+  match 3/10 first=Rule winner=AB-NO-D3 actions=86 time=0.1s
+  match 4/10 first=AB-NO-D3 winner=AB-NO-D3 actions=72 time=0.1s
+  match 5/10 first=Rule winner=AB-NO-D3 actions=400 time=0.1s TIEBREAK
+  match 6/10 first=AB-NO-D3 winner=AB-NO-D3 actions=64 time=0.2s
+  match 7/10 first=Rule winner=AB-NO-D3 actions=75 time=0.1s
+  match 8/10 first=AB-NO-D3 winner=AB-NO-D3 actions=68 time=0.2s
+  match 9/10 first=Rule winner=AB-NO-D3 actions=53 time=0.1s
+  match 10/10 first=AB-NO-D3 winner=AB-NO-D3 actions=73 time=0.1s
+--- Pair 5: Rule vs AB-ID ---
+  match 1/10 first=Rule winner=Rule actions=87 time=0.1s
+  match 2/10 first=AB-ID winner=AB-ID actions=72 time=0.2s
+  match 3/10 first=Rule winner=AB-ID actions=67 time=0.3s
+  match 4/10 first=AB-ID winner=AB-ID actions=71 time=0.2s
+  match 5/10 first=Rule winner=AB-ID actions=59 time=0.2s
+  match 6/10 first=AB-ID winner=AB-ID actions=400 time=0.3s TIEBREAK
+  match 7/10 first=Rule winner=Rule actions=400 time=0.1s TIEBREAK
+  match 8/10 first=AB-ID winner=AB-ID actions=67 time=0.2s
+  match 9/10 first=Rule winner=AB-ID actions=74 time=0.1s
+  match 10/10 first=AB-ID winner=AB-ID actions=65 time=0.1s
+--- Pair 6: Rule vs AB-TT-D3 ---
+  match 1/10 first=Rule winner=AB-TT-D3 actions=72 time=0.1s
+  match 2/10 first=AB-TT-D3 winner=AB-TT-D3 actions=54 time=0.1s
+  match 3/10 first=Rule winner=AB-TT-D3 actions=68 time=0.0s
+  match 4/10 first=AB-TT-D3 winner=AB-TT-D3 actions=44 time=0.0s
+  match 5/10 first=Rule winner=Rule actions=81 time=0.1s
+  match 6/10 first=AB-TT-D3 winner=AB-TT-D3 actions=40 time=0.1s
+  match 7/10 first=Rule winner=Rule actions=87 time=0.0s
+  match 8/10 first=AB-TT-D3 winner=AB-TT-D3 actions=32 time=0.1s
+  match 9/10 first=Rule winner=AB-TT-D3 actions=72 time=0.0s
+  match 10/10 first=AB-TT-D3 winner=AB-TT-D3 actions=70 time=0.0s
+--- Pair 7: Rule vs AB-Q-D2 ---
+  match 1/10 first=Rule winner=AB-Q-D2 actions=64 time=0.0s
+  match 2/10 first=AB-Q-D2 winner=AB-Q-D2 actions=73 time=0.0s
+  match 3/10 first=Rule winner=AB-Q-D2 actions=69 time=0.0s
+  match 4/10 first=AB-Q-D2 winner=draw actions=400 time=0.0s TIEBREAK
+  match 5/10 first=Rule winner=AB-Q-D2 actions=114 time=0.1s
+  match 6/10 first=AB-Q-D2 winner=AB-Q-D2 actions=45 time=0.0s
+  match 7/10 first=Rule winner=AB-Q-D2 actions=79 time=0.0s
+  match 8/10 first=AB-Q-D2 winner=AB-Q-D2 actions=46 time=0.0s
+  match 9/10 first=Rule winner=AB-Q-D2 actions=400 time=0.0s TIEBREAK
+  match 10/10 first=AB-Q-D2 winner=AB-Q-D2 actions=400 time=0.0s TIEBREAK
+--- Pair 8: Rule vs AB-Q-D2 ---
+  match 1/10 first=Rule winner=Rule actions=85 time=0.3s
+  match 2/10 first=AB-Q-D2 winner=AB-Q-D2 actions=400 time=0.3s TIEBREAK
+  match 3/10 first=Rule winner=AB-Q-D2 actions=117 time=0.2s
+  match 4/10 first=AB-Q-D2 winner=AB-Q-D2 actions=57 time=0.6s
+  match 5/10 first=Rule winner=AB-Q-D2 actions=400 time=0.2s TIEBREAK
+  match 6/10 first=AB-Q-D2 winner=AB-Q-D2 actions=88 time=0.6s
+  match 7/10 first=Rule winner=AB-Q-D2 actions=400 time=0.2s TIEBREAK
+  match 8/10 first=AB-Q-D2 winner=AB-Q-D2 actions=77 time=0.4s
+  match 9/10 first=Rule winner=AB-Q-D2 actions=400 time=0.2s TIEBREAK
+  match 10/10 first=AB-Q-D2 winner=AB-Q-D2 actions=56 time=0.5s
+--- Pair 9: Rule vs AB-PVS-D3 ---
+  match 1/10 first=Rule winner=AB-PVS-D3 actions=49 time=0.1s
+  match 2/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=400 time=0.1s TIEBREAK
+  match 3/10 first=Rule winner=AB-PVS-D3 actions=64 time=0.0s
+  match 4/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=96 time=0.0s
+  match 5/10 first=Rule winner=AB-PVS-D3 actions=400 time=0.1s TIEBREAK
+  match 6/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=47 time=0.0s
+  match 7/10 first=Rule winner=Rule actions=120 time=0.0s
+  match 8/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=57 time=0.1s
+  match 9/10 first=Rule winner=AB-PVS-D3 actions=400 time=0.1s TIEBREAK
+  match 10/10 first=AB-PVS-D3 winner=Rule actions=76 time=0.0s
+--- Pair 10: Rule vs EXP-D2 ---
+  match 1/10 first=Rule winner=Rule actions=68 time=0.0s
+  match 2/10 first=EXP-D2 winner=EXP-D2 actions=56 time=0.1s
+  match 3/10 first=Rule winner=EXP-D2 actions=75 time=0.1s
+  match 4/10 first=EXP-D2 winner=Rule actions=79 time=0.0s
+  match 5/10 first=Rule winner=Rule actions=122 time=0.0s
+  match 6/10 first=EXP-D2 winner=EXP-D2 actions=88 time=0.0s
+  match 7/10 first=Rule winner=EXP-D2 actions=60 time=0.0s
+  match 8/10 first=EXP-D2 winner=EXP-D2 actions=400 time=0.0s TIEBREAK
+  match 9/10 first=Rule winner=Rule actions=95 time=0.1s
+  match 10/10 first=EXP-D2 winner=Rule actions=73 time=0.0s
+--- Pair 11: Rule vs PIMC-D2 ---
+  match 1/10 first=Rule winner=PIMC-D2 actions=65 time=0.1s
+  match 2/10 first=PIMC-D2 winner=PIMC-D2 actions=400 time=0.2s TIEBREAK
+  match 3/10 first=Rule winner=Rule actions=86 time=0.2s
+  match 4/10 first=PIMC-D2 winner=Rule actions=78 time=0.2s
+  match 5/10 first=Rule winner=PIMC-D2 actions=400 time=0.2s TIEBREAK
+  match 6/10 first=PIMC-D2 winner=PIMC-D2 actions=400 time=0.2s TIEBREAK
+  match 7/10 first=Rule winner=Rule actions=91 time=0.2s
+  match 8/10 first=PIMC-D2 winner=PIMC-D2 actions=53 time=0.2s
+  match 9/10 first=Rule winner=PIMC-D2 actions=70 time=0.3s
+  match 10/10 first=PIMC-D2 winner=Rule actions=73 time=0.1s
+--- Pair 12: Rule vs MCTS-300 ---
+  match 1/10 first=Rule winner=Rule actions=28 time=0.1s
+  match 2/10 first=MCTS-300 winner=MCTS-300 actions=36 time=0.2s
+  match 3/10 first=Rule winner=Rule actions=28 time=0.0s
+  match 4/10 first=MCTS-300 winner=MCTS-300 actions=72 time=0.5s
+  match 5/10 first=Rule winner=Rule actions=23 time=0.0s
+  match 6/10 first=MCTS-300 winner=MCTS-300 actions=41 time=0.2s
+  match 7/10 first=Rule winner=Rule actions=30 time=0.1s
+  match 8/10 first=MCTS-300 winner=MCTS-300 actions=39 time=0.2s
+  match 9/10 first=Rule winner=Rule actions=28 time=0.1s
+  match 10/10 first=MCTS-300 winner=MCTS-300 actions=75 time=0.4s
+--- Pair 13: MM-D2 vs AB-D2 ---
+  match 1/10 first=MM-D2 winner=AB-D2 actions=64 time=0.2s
+  match 2/10 first=AB-D2 winner=MM-D2 actions=64 time=0.1s
+  match 3/10 first=MM-D2 winner=MM-D2 actions=34 time=0.1s
+  match 4/10 first=AB-D2 winner=AB-D2 actions=34 time=0.1s
+  match 5/10 first=MM-D2 winner=AB-D2 actions=48 time=0.2s
+  match 6/10 first=AB-D2 winner=MM-D2 actions=48 time=0.1s
+  match 7/10 first=MM-D2 winner=MM-D2 actions=102 time=0.1s
+  match 8/10 first=AB-D2 winner=AB-D2 actions=102 time=0.2s
+  match 9/10 first=MM-D2 winner=MM-D2 actions=50 time=0.2s
+  match 10/10 first=AB-D2 winner=AB-D2 actions=50 time=0.2s
+--- Pair 14: MM-D2 vs AB-D3 ---
+  match 1/10 first=MM-D2 winner=AB-D3 actions=64 time=0.2s
+  match 2/10 first=AB-D3 winner=MM-D2 actions=63 time=0.2s
+  match 3/10 first=MM-D2 winner=AB-D3 actions=68 time=0.2s
+  match 4/10 first=AB-D3 winner=MM-D2 actions=59 time=0.1s
+  match 5/10 first=MM-D2 winner=MM-D2 actions=61 time=1.0s
+  match 6/10 first=AB-D3 winner=AB-D3 actions=61 time=1.0s
+  match 7/10 first=MM-D2 winner=MM-D2 actions=76 time=0.2s
+  match 8/10 first=AB-D3 winner=MM-D2 actions=73 time=0.1s
+  match 9/10 first=MM-D2 winner=AB-D3 actions=64 time=0.2s
+  match 10/10 first=AB-D3 winner=MM-D2 actions=63 time=0.2s
+--- Pair 15: MM-D2 vs AB-NO-D3 ---
+  match 1/10 first=MM-D2 winner=MM-D2 actions=62 time=0.1s
+  match 2/10 first=AB-NO-D3 winner=AB-NO-D3 actions=68 time=0.2s
+  match 3/10 first=MM-D2 winner=MM-D2 actions=60 time=0.2s
+  match 4/10 first=AB-NO-D3 winner=AB-NO-D3 actions=58 time=0.2s
+  match 5/10 first=MM-D2 winner=AB-NO-D3 actions=68 time=0.2s
+  match 6/10 first=AB-NO-D3 winner=AB-NO-D3 actions=59 time=0.2s
+  match 7/10 first=MM-D2 winner=MM-D2 actions=53 time=0.2s
+  match 8/10 first=AB-NO-D3 winner=AB-NO-D3 actions=63 time=0.2s
+  match 9/10 first=MM-D2 winner=MM-D2 actions=74 time=0.2s
+  match 10/10 first=AB-NO-D3 winner=AB-NO-D3 actions=43 time=0.2s
+--- Pair 16: MM-D2 vs AB-ID ---
+  match 1/10 first=MM-D2 winner=MM-D2 actions=400 time=0.2s TIEBREAK
+  match 2/10 first=AB-ID winner=AB-ID actions=68 time=0.2s
+  match 3/10 first=MM-D2 winner=MM-D2 actions=51 time=0.2s
+  match 4/10 first=AB-ID winner=AB-ID actions=71 time=0.2s
+  match 5/10 first=MM-D2 winner=AB-ID actions=73 time=0.2s
+  match 6/10 first=AB-ID winner=MM-D2 actions=76 time=0.4s
+  match 7/10 first=MM-D2 winner=AB-ID actions=67 time=0.4s
+  match 8/10 first=AB-ID winner=MM-D2 actions=58 time=0.3s
+  match 9/10 first=MM-D2 winner=MM-D2 actions=52 time=0.4s
+  match 10/10 first=AB-ID winner=AB-ID actions=58 time=0.3s
+--- Pair 17: MM-D2 vs AB-TT-D3 ---
+  match 1/10 first=MM-D2 winner=MM-D2 actions=46 time=0.2s
+  match 2/10 first=AB-TT-D3 winner=AB-TT-D3 actions=52 time=0.2s
+  match 3/10 first=MM-D2 winner=MM-D2 actions=49 time=0.1s
+  match 4/10 first=AB-TT-D3 winner=AB-TT-D3 actions=72 time=0.1s
+  match 5/10 first=MM-D2 winner=MM-D2 actions=73 time=0.2s
+  match 6/10 first=AB-TT-D3 winner=AB-TT-D3 actions=75 time=0.1s
+  match 7/10 first=MM-D2 winner=AB-TT-D3 actions=69 time=0.1s
+  match 8/10 first=AB-TT-D3 winner=MM-D2 actions=75 time=0.1s
+  match 9/10 first=MM-D2 winner=AB-TT-D3 actions=65 time=0.2s
+  match 10/10 first=AB-TT-D3 winner=MM-D2 actions=400 time=0.2s TIEBREAK
+--- Pair 18: MM-D2 vs AB-Q-D2 ---
+  match 1/10 first=MM-D2 winner=MM-D2 actions=66 time=0.1s
+  match 2/10 first=AB-Q-D2 winner=AB-Q-D2 actions=58 time=0.1s
+  match 3/10 first=MM-D2 winner=MM-D2 actions=49 time=0.1s
+  match 4/10 first=AB-Q-D2 winner=AB-Q-D2 actions=49 time=0.1s
+  match 5/10 first=MM-D2 winner=MM-D2 actions=57 time=0.2s
+  match 6/10 first=AB-Q-D2 winner=AB-Q-D2 actions=57 time=0.2s
+  match 7/10 first=MM-D2 winner=AB-Q-D2 actions=400 time=0.1s TIEBREAK
+  match 8/10 first=AB-Q-D2 winner=MM-D2 actions=400 time=0.1s TIEBREAK
+  match 9/10 first=MM-D2 winner=MM-D2 actions=43 time=0.1s
+  match 10/10 first=AB-Q-D2 winner=AB-Q-D2 actions=49 time=0.0s
+--- Pair 19: MM-D2 vs AB-Q-D2 ---
+  match 1/10 first=MM-D2 winner=MM-D2 actions=62 time=0.4s
+  match 2/10 first=AB-Q-D2 winner=AB-Q-D2 actions=62 time=0.4s
+  match 3/10 first=MM-D2 winner=AB-Q-D2 actions=63 time=0.3s
+  match 4/10 first=AB-Q-D2 winner=AB-Q-D2 actions=76 time=0.2s
+  match 5/10 first=MM-D2 winner=AB-Q-D2 actions=59 time=0.6s
+  match 6/10 first=AB-Q-D2 winner=AB-Q-D2 actions=101 time=0.5s
+  match 7/10 first=MM-D2 winner=AB-Q-D2 actions=68 time=0.3s
+  match 8/10 first=AB-Q-D2 winner=MM-D2 actions=81 time=0.3s
+  match 9/10 first=MM-D2 winner=AB-Q-D2 actions=400 time=0.3s TIEBREAK
+  match 10/10 first=AB-Q-D2 winner=AB-Q-D2 actions=74 time=0.4s
+--- Pair 20: MM-D2 vs AB-PVS-D3 ---
+  match 1/10 first=MM-D2 winner=MM-D2 actions=73 time=0.2s
+  match 2/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=77 time=0.2s
+  match 3/10 first=MM-D2 winner=AB-PVS-D3 actions=70 time=0.2s
+  match 4/10 first=AB-PVS-D3 winner=MM-D2 actions=67 time=0.2s
+  match 5/10 first=MM-D2 winner=AB-PVS-D3 actions=73 time=0.2s
+  match 6/10 first=AB-PVS-D3 winner=MM-D2 actions=74 time=0.3s
+  match 7/10 first=MM-D2 winner=MM-D2 actions=83 time=0.2s
+  match 8/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=77 time=0.3s
+  match 9/10 first=MM-D2 winner=AB-PVS-D3 actions=75 time=0.2s
+  match 10/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=55 time=0.2s
+--- Pair 21: MM-D2 vs EXP-D2 ---
+  match 1/10 first=MM-D2 winner=MM-D2 actions=64 time=0.2s
+  match 2/10 first=EXP-D2 winner=MM-D2 actions=69 time=0.2s
+  match 3/10 first=MM-D2 winner=MM-D2 actions=70 time=0.2s
+  match 4/10 first=EXP-D2 winner=MM-D2 actions=61 time=0.2s
+  match 5/10 first=MM-D2 winner=MM-D2 actions=71 time=0.3s
+  match 6/10 first=EXP-D2 winner=EXP-D2 actions=47 time=0.2s
+  match 7/10 first=MM-D2 winner=MM-D2 actions=65 time=0.2s
+  match 8/10 first=EXP-D2 winner=MM-D2 actions=64 time=0.2s
+  match 9/10 first=MM-D2 winner=MM-D2 actions=46 time=0.2s
+  match 10/10 first=EXP-D2 winner=MM-D2 actions=74 time=0.3s
+--- Pair 22: MM-D2 vs PIMC-D2 ---
+  match 1/10 first=MM-D2 winner=MM-D2 actions=73 time=0.3s
+  match 2/10 first=PIMC-D2 winner=PIMC-D2 actions=73 time=0.2s
+  match 3/10 first=MM-D2 winner=MM-D2 actions=92 time=0.4s
+  match 4/10 first=PIMC-D2 winner=PIMC-D2 actions=92 time=0.3s
+  match 5/10 first=MM-D2 winner=PIMC-D2 actions=54 time=0.5s
+  match 6/10 first=PIMC-D2 winner=MM-D2 actions=54 time=0.4s
+  match 7/10 first=MM-D2 winner=MM-D2 actions=62 time=0.3s
+  match 8/10 first=PIMC-D2 winner=PIMC-D2 actions=62 time=0.2s
+  match 9/10 first=MM-D2 winner=MM-D2 actions=400 time=0.3s TIEBREAK
+  match 10/10 first=PIMC-D2 winner=PIMC-D2 actions=48 time=0.3s
+--- Pair 23: MM-D2 vs MCTS-300 ---
+  match 1/10 first=MM-D2 winner=MM-D2 actions=23 time=0.1s
+  match 2/10 first=MCTS-300 winner=MCTS-300 actions=50 time=0.3s
+  match 3/10 first=MM-D2 winner=MM-D2 actions=28 time=0.1s
+  match 4/10 first=MCTS-300 winner=MCTS-300 actions=40 time=0.3s
+  match 5/10 first=MM-D2 winner=MM-D2 actions=23 time=0.1s
+  match 6/10 first=MCTS-300 winner=MCTS-300 actions=55 time=0.3s
+  match 7/10 first=MM-D2 winner=MM-D2 actions=23 time=0.1s
+  match 8/10 first=MCTS-300 winner=MM-D2 actions=61 time=0.4s
+  match 9/10 first=MM-D2 winner=MM-D2 actions=21 time=0.1s
+  match 10/10 first=MCTS-300 winner=MM-D2 actions=61 time=0.4s
+--- Pair 24: AB-D2 vs AB-D3 ---
+  match 1/10 first=AB-D2 winner=AB-D3 actions=73 time=0.1s
+  match 2/10 first=AB-D3 winner=AB-D2 actions=66 time=0.1s
+  match 3/10 first=AB-D2 winner=AB-D2 actions=82 time=0.1s
+  match 4/10 first=AB-D3 winner=AB-D3 actions=82 time=0.1s
+  match 5/10 first=AB-D2 winner=AB-D2 actions=400 time=0.1s TIEBREAK
+  match 6/10 first=AB-D3 winner=AB-D3 actions=70 time=0.3s
+  match 7/10 first=AB-D2 winner=AB-D3 actions=73 time=0.2s
+  match 8/10 first=AB-D3 winner=AB-D2 actions=75 time=0.1s
+  match 9/10 first=AB-D2 winner=AB-D2 actions=62 time=0.1s
+  match 10/10 first=AB-D3 winner=AB-D3 actions=59 time=0.2s
+--- Pair 25: AB-D2 vs AB-NO-D3 ---
+  match 1/10 first=AB-D2 winner=AB-D2 actions=70 time=0.0s
+  match 2/10 first=AB-NO-D3 winner=AB-NO-D3 actions=70 time=0.1s
+  match 3/10 first=AB-D2 winner=AB-NO-D3 actions=51 time=0.2s
+  match 4/10 first=AB-NO-D3 winner=AB-NO-D3 actions=76 time=0.1s
+  match 5/10 first=AB-D2 winner=AB-NO-D3 actions=102 time=0.1s
+  match 6/10 first=AB-NO-D3 winner=AB-D2 actions=71 time=0.1s
+  match 7/10 first=AB-D2 winner=AB-NO-D3 actions=55 time=0.1s
+  match 8/10 first=AB-NO-D3 winner=AB-NO-D3 actions=79 time=0.1s
+  match 9/10 first=AB-D2 winner=AB-NO-D3 actions=69 time=0.1s
+  match 10/10 first=AB-NO-D3 winner=AB-NO-D3 actions=69 time=0.1s
+--- Pair 26: AB-D2 vs AB-ID ---
+  match 1/10 first=AB-D2 winner=AB-D2 actions=42 time=0.1s
+  match 2/10 first=AB-ID winner=AB-ID actions=42 time=0.2s
+  match 3/10 first=AB-D2 winner=AB-ID actions=74 time=0.2s
+  match 4/10 first=AB-ID winner=AB-ID actions=66 time=0.2s
+  match 5/10 first=AB-D2 winner=AB-D2 actions=400 time=0.2s TIEBREAK
+  match 6/10 first=AB-ID winner=AB-ID actions=66 time=0.2s
+  match 7/10 first=AB-D2 winner=AB-ID actions=72 time=0.2s
+  match 8/10 first=AB-ID winner=AB-ID actions=400 time=0.3s TIEBREAK
+  match 9/10 first=AB-D2 winner=AB-D2 actions=64 time=0.1s
+  match 10/10 first=AB-ID winner=AB-ID actions=66 time=0.2s
+--- Pair 27: AB-D2 vs AB-TT-D3 ---
+  match 1/10 first=AB-D2 winner=AB-D2 actions=49 time=0.1s
+  match 2/10 first=AB-TT-D3 winner=AB-TT-D3 actions=44 time=0.1s
+  match 3/10 first=AB-D2 winner=AB-D2 actions=79 time=0.0s
+  match 4/10 first=AB-TT-D3 winner=AB-TT-D3 actions=81 time=0.1s
+  match 5/10 first=AB-D2 winner=AB-D2 actions=44 time=0.1s
+  match 6/10 first=AB-TT-D3 winner=AB-TT-D3 actions=43 time=0.1s
+  match 7/10 first=AB-D2 winner=AB-TT-D3 actions=74 time=0.1s
+  match 8/10 first=AB-TT-D3 winner=AB-TT-D3 actions=67 time=0.1s
+  match 9/10 first=AB-D2 winner=AB-D2 actions=400 time=0.1s TIEBREAK
+  match 10/10 first=AB-TT-D3 winner=AB-TT-D3 actions=400 time=0.2s TIEBREAK
+--- Pair 28: AB-D2 vs AB-Q-D2 ---
+  match 1/10 first=AB-D2 winner=AB-D2 actions=50 time=0.0s
+  match 2/10 first=AB-Q-D2 winner=AB-Q-D2 actions=44 time=0.0s
+  match 3/10 first=AB-D2 winner=AB-D2 actions=61 time=0.0s
+  match 4/10 first=AB-Q-D2 winner=AB-Q-D2 actions=66 time=0.1s
+  match 5/10 first=AB-D2 winner=AB-D2 actions=61 time=0.3s
+  match 6/10 first=AB-Q-D2 winner=AB-Q-D2 actions=61 time=0.2s
+  match 7/10 first=AB-D2 winner=AB-Q-D2 actions=71 time=0.1s
+  match 8/10 first=AB-Q-D2 winner=AB-Q-D2 actions=41 time=0.0s
+  match 9/10 first=AB-D2 winner=AB-Q-D2 actions=68 time=0.0s
+  match 10/10 first=AB-Q-D2 winner=AB-D2 actions=52 time=0.0s
+--- Pair 29: AB-D2 vs AB-Q-D2 ---
+  match 1/10 first=AB-D2 winner=AB-Q-D2 actions=56 time=0.3s
+  match 2/10 first=AB-Q-D2 winner=AB-Q-D2 actions=45 time=0.5s
+  match 3/10 first=AB-D2 winner=AB-D2 actions=52 time=0.1s
+  match 4/10 first=AB-Q-D2 winner=AB-Q-D2 actions=52 time=0.2s
+  match 5/10 first=AB-D2 winner=AB-Q-D2 actions=73 time=0.3s
+  match 6/10 first=AB-Q-D2 winner=AB-Q-D2 actions=62 time=0.5s
+  match 7/10 first=AB-D2 winner=AB-Q-D2 actions=88 time=0.2s
+  match 8/10 first=AB-Q-D2 winner=AB-D2 actions=72 time=0.2s
+  match 9/10 first=AB-D2 winner=AB-D2 actions=400 time=0.1s TIEBREAK
+  match 10/10 first=AB-Q-D2 winner=AB-Q-D2 actions=97 time=0.2s
+--- Pair 30: AB-D2 vs AB-PVS-D3 ---
+  match 1/10 first=AB-D2 winner=AB-D2 actions=57 time=0.1s
+  match 2/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=67 time=0.1s
+  match 3/10 first=AB-D2 winner=AB-D2 actions=95 time=0.1s
+  match 4/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=400 time=0.1s TIEBREAK
+  match 5/10 first=AB-D2 winner=draw actions=400 time=0.1s TIEBREAK
+  match 6/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=400 time=0.1s TIEBREAK
+  match 7/10 first=AB-D2 winner=AB-PVS-D3 actions=79 time=0.1s
+  match 8/10 first=AB-PVS-D3 winner=AB-D2 actions=79 time=0.1s
+  match 9/10 first=AB-D2 winner=AB-D2 actions=50 time=0.0s
+  match 10/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=60 time=0.1s
+--- Pair 31: AB-D2 vs EXP-D2 ---
+  match 1/10 first=AB-D2 winner=AB-D2 actions=49 time=0.1s
+  match 2/10 first=EXP-D2 winner=AB-D2 actions=58 time=0.1s
+  match 3/10 first=AB-D2 winner=AB-D2 actions=43 time=0.0s
+  match 4/10 first=EXP-D2 winner=AB-D2 actions=72 time=0.1s
+  match 5/10 first=AB-D2 winner=AB-D2 actions=400 time=0.1s TIEBREAK
+  match 6/10 first=EXP-D2 winner=EXP-D2 actions=62 time=0.1s
+  match 7/10 first=AB-D2 winner=AB-D2 actions=72 time=0.2s
+  match 8/10 first=EXP-D2 winner=AB-D2 actions=56 time=0.1s
+  match 9/10 first=AB-D2 winner=AB-D2 actions=53 time=0.0s
+  match 10/10 first=EXP-D2 winner=EXP-D2 actions=57 time=0.1s
+--- Pair 32: AB-D2 vs PIMC-D2 ---
+  match 1/10 first=AB-D2 winner=AB-D2 actions=72 time=0.3s
+  match 2/10 first=PIMC-D2 winner=PIMC-D2 actions=72 time=0.2s
+  match 3/10 first=AB-D2 winner=AB-D2 actions=40 time=0.2s
+  match 4/10 first=PIMC-D2 winner=PIMC-D2 actions=40 time=0.2s
+  match 5/10 first=AB-D2 winner=PIMC-D2 actions=59 time=0.2s
+  match 6/10 first=PIMC-D2 winner=AB-D2 actions=59 time=0.2s
+  match 7/10 first=AB-D2 winner=AB-D2 actions=43 time=0.2s
+  match 8/10 first=PIMC-D2 winner=PIMC-D2 actions=43 time=0.2s
+  match 9/10 first=AB-D2 winner=AB-D2 actions=43 time=0.2s
+  match 10/10 first=PIMC-D2 winner=PIMC-D2 actions=43 time=0.3s
+--- Pair 33: AB-D2 vs MCTS-300 ---
+  match 1/10 first=AB-D2 winner=AB-D2 actions=23 time=0.0s
+  match 2/10 first=MCTS-300 winner=MCTS-300 actions=48 time=0.3s
+  match 3/10 first=AB-D2 winner=AB-D2 actions=20 time=0.1s
+  match 4/10 first=MCTS-300 winner=AB-D2 actions=400 time=1.6s TIEBREAK
+  match 5/10 first=AB-D2 winner=AB-D2 actions=26 time=0.1s
+  match 6/10 first=MCTS-300 winner=MCTS-300 actions=58 time=0.4s
+  match 7/10 first=AB-D2 winner=AB-D2 actions=23 time=0.0s
+  match 8/10 first=MCTS-300 winner=AB-D2 actions=63 time=0.3s
+  match 9/10 first=AB-D2 winner=AB-D2 actions=23 time=0.0s
+  match 10/10 first=MCTS-300 winner=MCTS-300 actions=49 time=0.3s
+--- Pair 34: AB-D3 vs AB-NO-D3 ---
+  match 1/10 first=AB-D3 winner=AB-D3 actions=42 time=0.2s
+  match 2/10 first=AB-NO-D3 winner=AB-NO-D3 actions=71 time=0.2s
+  match 3/10 first=AB-D3 winner=AB-D3 actions=73 time=0.1s
+  match 4/10 first=AB-NO-D3 winner=AB-D3 actions=75 time=0.2s
+  match 5/10 first=AB-D3 winner=AB-NO-D3 actions=74 time=0.2s
+  match 6/10 first=AB-NO-D3 winner=AB-NO-D3 actions=54 time=0.1s
+  match 7/10 first=AB-D3 winner=AB-D3 actions=400 time=0.2s TIEBREAK
+  match 8/10 first=AB-NO-D3 winner=AB-NO-D3 actions=45 time=0.1s
+  match 9/10 first=AB-D3 winner=AB-NO-D3 actions=63 time=0.1s
+  match 10/10 first=AB-NO-D3 winner=AB-D3 actions=64 time=0.1s
+--- Pair 35: AB-D3 vs AB-ID ---
+  match 1/10 first=AB-D3 winner=AB-D3 actions=77 time=0.2s
+  match 2/10 first=AB-ID winner=AB-D3 actions=67 time=0.3s
+  match 3/10 first=AB-D3 winner=AB-D3 actions=46 time=0.3s
+  match 4/10 first=AB-ID winner=AB-ID actions=46 time=0.2s
+  match 5/10 first=AB-D3 winner=AB-D3 actions=65 time=0.3s
+  match 6/10 first=AB-ID winner=AB-D3 actions=70 time=0.2s
+  match 7/10 first=AB-D3 winner=AB-D3 actions=49 time=0.3s
+  match 8/10 first=AB-ID winner=AB-ID actions=49 time=0.2s
+  match 9/10 first=AB-D3 winner=AB-D3 actions=43 time=0.2s
+  match 10/10 first=AB-ID winner=AB-ID actions=43 time=0.3s
+--- Pair 36: AB-D3 vs AB-TT-D3 ---
+  match 1/10 first=AB-D3 winner=AB-D3 actions=65 time=0.1s
+  match 2/10 first=AB-TT-D3 winner=AB-TT-D3 actions=65 time=0.1s
+  match 3/10 first=AB-D3 winner=AB-D3 actions=77 time=0.3s
+  match 4/10 first=AB-TT-D3 winner=AB-TT-D3 actions=77 time=0.2s
+  match 5/10 first=AB-D3 winner=AB-D3 actions=44 time=0.2s
+  match 6/10 first=AB-TT-D3 winner=AB-TT-D3 actions=44 time=0.1s
+  match 7/10 first=AB-D3 winner=AB-TT-D3 actions=67 time=0.2s
+  match 8/10 first=AB-TT-D3 winner=AB-D3 actions=67 time=0.2s
+  match 9/10 first=AB-D3 winner=AB-D3 actions=56 time=0.1s
+  match 10/10 first=AB-TT-D3 winner=AB-TT-D3 actions=56 time=0.1s
+--- Pair 37: AB-D3 vs AB-Q-D2 ---
+  match 1/10 first=AB-D3 winner=AB-Q-D2 actions=58 time=0.1s
+  match 2/10 first=AB-Q-D2 winner=AB-D3 actions=58 time=0.1s
+  match 3/10 first=AB-D3 winner=AB-D3 actions=62 time=0.1s
+  match 4/10 first=AB-Q-D2 winner=AB-Q-D2 actions=55 time=0.1s
+  match 5/10 first=AB-D3 winner=AB-D3 actions=53 time=0.1s
+  match 6/10 first=AB-Q-D2 winner=AB-Q-D2 actions=54 time=0.1s
+  match 7/10 first=AB-D3 winner=AB-D3 actions=68 time=0.1s
+  match 8/10 first=AB-Q-D2 winner=AB-Q-D2 actions=79 time=0.1s
+  match 9/10 first=AB-D3 winner=AB-D3 actions=71 time=0.2s
+  match 10/10 first=AB-Q-D2 winner=AB-Q-D2 actions=56 time=0.0s
+--- Pair 38: AB-D3 vs AB-Q-D2 ---
+  match 1/10 first=AB-D3 winner=AB-D3 actions=65 time=0.3s
+  match 2/10 first=AB-Q-D2 winner=AB-Q-D2 actions=70 time=0.3s
+  match 3/10 first=AB-D3 winner=AB-D3 actions=71 time=0.4s
+  match 4/10 first=AB-Q-D2 winner=AB-Q-D2 actions=72 time=0.2s
+  match 5/10 first=AB-D3 winner=AB-D3 actions=40 time=0.4s
+  match 6/10 first=AB-Q-D2 winner=AB-Q-D2 actions=48 time=0.5s
+  match 7/10 first=AB-D3 winner=AB-Q-D2 actions=69 time=0.2s
+  match 8/10 first=AB-Q-D2 winner=AB-D3 actions=62 time=0.2s
+  match 9/10 first=AB-D3 winner=AB-Q-D2 actions=80 time=0.3s
+  match 10/10 first=AB-Q-D2 winner=AB-Q-D2 actions=58 time=0.2s
+--- Pair 39: AB-D3 vs AB-PVS-D3 ---
+  match 1/10 first=AB-D3 winner=AB-D3 actions=77 time=0.1s
+  match 2/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=77 time=0.1s
+  match 3/10 first=AB-D3 winner=AB-PVS-D3 actions=73 time=0.1s
+  match 4/10 first=AB-PVS-D3 winner=AB-D3 actions=73 time=0.2s
+  match 5/10 first=AB-D3 winner=AB-PVS-D3 actions=68 time=0.1s
+  match 6/10 first=AB-PVS-D3 winner=AB-D3 actions=68 time=0.2s
+  match 7/10 first=AB-D3 winner=AB-D3 actions=400 time=0.2s TIEBREAK
+  match 8/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=400 time=0.1s TIEBREAK
+  match 9/10 first=AB-D3 winner=AB-D3 actions=84 time=0.3s
+  match 10/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=84 time=0.2s
+--- Pair 40: AB-D3 vs EXP-D2 ---
+  match 1/10 first=AB-D3 winner=AB-D3 actions=67 time=0.1s
+  match 2/10 first=EXP-D2 winner=AB-D3 actions=60 time=0.2s
+  match 3/10 first=AB-D3 winner=AB-D3 actions=73 time=0.1s
+  match 4/10 first=EXP-D2 winner=EXP-D2 actions=49 time=0.1s
+  match 5/10 first=AB-D3 winner=AB-D3 actions=51 time=0.1s
+  match 6/10 first=EXP-D2 winner=AB-D3 actions=69 time=0.1s
+  match 7/10 first=AB-D3 winner=AB-D3 actions=72 time=0.2s
+  match 8/10 first=EXP-D2 winner=EXP-D2 actions=400 time=0.1s TIEBREAK
+  match 9/10 first=AB-D3 winner=AB-D3 actions=62 time=0.1s
+  match 10/10 first=EXP-D2 winner=AB-D3 actions=64 time=0.1s
+--- Pair 41: AB-D3 vs PIMC-D2 ---
+  match 1/10 first=AB-D3 winner=AB-D3 actions=73 time=0.3s
+  match 2/10 first=PIMC-D2 winner=PIMC-D2 actions=40 time=0.1s
+  match 3/10 first=AB-D3 winner=AB-D3 actions=66 time=0.6s
+  match 4/10 first=PIMC-D2 winner=PIMC-D2 actions=400 time=0.4s TIEBREAK
+  match 5/10 first=AB-D3 winner=AB-D3 actions=79 time=0.3s
+  match 6/10 first=PIMC-D2 winner=AB-D3 actions=63 time=0.5s
+  match 7/10 first=AB-D3 winner=AB-D3 actions=68 time=0.3s
+  match 8/10 first=PIMC-D2 winner=PIMC-D2 actions=58 time=0.2s
+  match 9/10 first=AB-D3 winner=PIMC-D2 actions=64 time=0.4s
+  match 10/10 first=PIMC-D2 winner=PIMC-D2 actions=400 time=0.5s TIEBREAK
+--- Pair 42: AB-D3 vs MCTS-300 ---
+  match 1/10 first=AB-D3 winner=AB-D3 actions=23 time=0.2s
+  match 2/10 first=MCTS-300 winner=MCTS-300 actions=54 time=0.4s
+  match 3/10 first=AB-D3 winner=AB-D3 actions=23 time=0.1s
+  match 4/10 first=MCTS-300 winner=MCTS-300 actions=51 time=0.3s
+  match 5/10 first=AB-D3 winner=AB-D3 actions=17 time=0.1s
+  match 6/10 first=MCTS-300 winner=AB-D3 actions=73 time=0.4s
+  match 7/10 first=AB-D3 winner=AB-D3 actions=23 time=0.2s
+  match 8/10 first=MCTS-300 winner=MCTS-300 actions=51 time=0.3s
+  match 9/10 first=AB-D3 winner=AB-D3 actions=17 time=0.1s
+  match 10/10 first=MCTS-300 winner=AB-D3 actions=44 time=0.2s
+--- Pair 43: AB-NO-D3 vs AB-ID ---
+  match 1/10 first=AB-NO-D3 winner=AB-NO-D3 actions=67 time=0.2s
+  match 2/10 first=AB-ID winner=AB-NO-D3 actions=62 time=0.2s
+  match 3/10 first=AB-NO-D3 winner=AB-NO-D3 actions=57 time=0.3s
+  match 4/10 first=AB-ID winner=AB-ID actions=97 time=0.3s
+  match 5/10 first=AB-NO-D3 winner=AB-ID actions=66 time=0.2s
+  match 6/10 first=AB-ID winner=AB-ID actions=66 time=0.2s
+  match 7/10 first=AB-NO-D3 winner=AB-NO-D3 actions=58 time=0.2s
+  match 8/10 first=AB-ID winner=AB-ID actions=57 time=0.2s
+  match 9/10 first=AB-NO-D3 winner=AB-NO-D3 actions=50 time=0.2s
+  match 10/10 first=AB-ID winner=AB-NO-D3 actions=85 time=0.2s
+--- Pair 44: AB-NO-D3 vs AB-TT-D3 ---
+  match 1/10 first=AB-NO-D3 winner=AB-TT-D3 actions=400 time=0.3s TIEBREAK
+  match 2/10 first=AB-TT-D3 winner=AB-TT-D3 actions=78 time=0.2s
+  match 3/10 first=AB-NO-D3 winner=AB-NO-D3 actions=98 time=0.1s
+  match 4/10 first=AB-TT-D3 winner=AB-TT-D3 actions=98 time=0.1s
+  match 5/10 first=AB-NO-D3 winner=AB-NO-D3 actions=70 time=0.1s
+  match 6/10 first=AB-TT-D3 winner=AB-TT-D3 actions=68 time=0.1s
+  match 7/10 first=AB-NO-D3 winner=AB-TT-D3 actions=74 time=0.1s
+  match 8/10 first=AB-TT-D3 winner=AB-NO-D3 actions=69 time=0.1s
+  match 9/10 first=AB-NO-D3 winner=AB-NO-D3 actions=73 time=0.1s
+  match 10/10 first=AB-TT-D3 winner=AB-TT-D3 actions=69 time=0.2s
+--- Pair 45: AB-NO-D3 vs AB-Q-D2 ---
+  match 1/10 first=AB-NO-D3 winner=AB-NO-D3 actions=92 time=0.2s
+  match 2/10 first=AB-Q-D2 winner=AB-Q-D2 actions=79 time=0.1s
+  match 3/10 first=AB-NO-D3 winner=AB-NO-D3 actions=69 time=0.3s
+  match 4/10 first=AB-Q-D2 winner=AB-NO-D3 actions=74 time=0.2s
+  match 5/10 first=AB-NO-D3 winner=AB-NO-D3 actions=400 time=0.1s TIEBREAK
+  match 6/10 first=AB-Q-D2 winner=AB-NO-D3 actions=68 time=0.1s
+  match 7/10 first=AB-NO-D3 winner=AB-NO-D3 actions=52 time=0.1s
+  match 8/10 first=AB-Q-D2 winner=AB-Q-D2 actions=43 time=0.0s
+  match 9/10 first=AB-NO-D3 winner=AB-NO-D3 actions=62 time=0.1s
+  match 10/10 first=AB-Q-D2 winner=AB-Q-D2 actions=59 time=0.1s
+--- Pair 46: AB-NO-D3 vs AB-Q-D2 ---
+  match 1/10 first=AB-NO-D3 winner=AB-NO-D3 actions=56 time=0.8s
+  match 2/10 first=AB-Q-D2 winner=AB-Q-D2 actions=65 time=0.2s
+  match 3/10 first=AB-NO-D3 winner=AB-Q-D2 actions=51 time=0.3s
+  match 4/10 first=AB-Q-D2 winner=AB-NO-D3 actions=64 time=0.2s
+  match 5/10 first=AB-NO-D3 winner=AB-NO-D3 actions=52 time=0.5s
+  match 6/10 first=AB-Q-D2 winner=AB-Q-D2 actions=71 time=0.6s
+  match 7/10 first=AB-NO-D3 winner=AB-Q-D2 actions=71 time=0.3s
+  match 8/10 first=AB-Q-D2 winner=AB-NO-D3 actions=72 time=0.6s
+  match 9/10 first=AB-NO-D3 winner=AB-NO-D3 actions=35 time=0.1s
+  match 10/10 first=AB-Q-D2 winner=AB-Q-D2 actions=48 time=0.2s
+--- Pair 47: AB-NO-D3 vs AB-PVS-D3 ---
+  match 1/10 first=AB-NO-D3 winner=AB-NO-D3 actions=108 time=0.1s
+  match 2/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=66 time=0.1s
+  match 3/10 first=AB-NO-D3 winner=AB-NO-D3 actions=74 time=0.1s
+  match 4/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=55 time=0.1s
+  match 5/10 first=AB-NO-D3 winner=AB-NO-D3 actions=54 time=0.1s
+  match 6/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=70 time=0.1s
+  match 7/10 first=AB-NO-D3 winner=AB-PVS-D3 actions=84 time=0.1s
+  match 8/10 first=AB-PVS-D3 winner=AB-NO-D3 actions=84 time=0.1s
+  match 9/10 first=AB-NO-D3 winner=AB-NO-D3 actions=77 time=0.3s
+  match 10/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=68 time=0.1s
+--- Pair 48: AB-NO-D3 vs EXP-D2 ---
+  match 1/10 first=AB-NO-D3 winner=AB-NO-D3 actions=60 time=0.2s
+  match 2/10 first=EXP-D2 winner=EXP-D2 actions=400 time=0.2s TIEBREAK
+  match 3/10 first=AB-NO-D3 winner=AB-NO-D3 actions=62 time=0.1s
+  match 4/10 first=EXP-D2 winner=EXP-D2 actions=60 time=0.1s
+  match 5/10 first=AB-NO-D3 winner=EXP-D2 actions=400 time=0.2s TIEBREAK
+  match 6/10 first=EXP-D2 winner=AB-NO-D3 actions=62 time=0.1s
+  match 7/10 first=AB-NO-D3 winner=AB-NO-D3 actions=60 time=0.2s
+  match 8/10 first=EXP-D2 winner=AB-NO-D3 actions=63 time=0.2s
+  match 9/10 first=AB-NO-D3 winner=draw actions=400 time=0.2s TIEBREAK
+  match 10/10 first=EXP-D2 winner=EXP-D2 actions=400 time=0.1s TIEBREAK
+--- Pair 49: AB-NO-D3 vs PIMC-D2 ---
+  match 1/10 first=AB-NO-D3 winner=AB-NO-D3 actions=80 time=0.4s
+  match 2/10 first=PIMC-D2 winner=PIMC-D2 actions=58 time=0.1s
+  match 3/10 first=AB-NO-D3 winner=AB-NO-D3 actions=71 time=0.4s
+  match 4/10 first=PIMC-D2 winner=PIMC-D2 actions=400 time=0.6s TIEBREAK
+  match 5/10 first=AB-NO-D3 winner=AB-NO-D3 actions=67 time=0.4s
+  match 6/10 first=PIMC-D2 winner=PIMC-D2 actions=51 time=0.2s
+  match 7/10 first=AB-NO-D3 winner=PIMC-D2 actions=74 time=0.3s
+  match 8/10 first=PIMC-D2 winner=PIMC-D2 actions=62 time=0.4s
+  match 9/10 first=AB-NO-D3 winner=AB-NO-D3 actions=66 time=0.2s
+  match 10/10 first=PIMC-D2 winner=PIMC-D2 actions=400 time=0.2s TIEBREAK
+--- Pair 50: AB-NO-D3 vs MCTS-300 ---
+  match 1/10 first=AB-NO-D3 winner=AB-NO-D3 actions=32 time=0.2s
+  match 2/10 first=MCTS-300 winner=MCTS-300 actions=51 time=0.3s
+  match 3/10 first=AB-NO-D3 winner=AB-NO-D3 actions=23 time=0.2s
+  match 4/10 first=MCTS-300 winner=MCTS-300 actions=31 time=0.2s
+  match 5/10 first=AB-NO-D3 winner=AB-NO-D3 actions=29 time=0.1s
+  match 6/10 first=MCTS-300 winner=AB-NO-D3 actions=50 time=0.3s
+  match 7/10 first=AB-NO-D3 winner=AB-NO-D3 actions=20 time=0.1s
+  match 8/10 first=MCTS-300 winner=MCTS-300 actions=50 time=0.3s
+  match 9/10 first=AB-NO-D3 winner=AB-NO-D3 actions=29 time=0.2s
+  match 10/10 first=MCTS-300 winner=MCTS-300 actions=40 time=0.2s
+--- Pair 51: AB-ID vs AB-TT-D3 ---
+  match 1/10 first=AB-ID winner=AB-ID actions=65 time=0.4s
+  match 2/10 first=AB-TT-D3 winner=AB-TT-D3 actions=65 time=0.2s
+  match 3/10 first=AB-ID winner=AB-TT-D3 actions=55 time=0.2s
+  match 4/10 first=AB-TT-D3 winner=AB-ID actions=55 time=0.2s
+  match 5/10 first=AB-ID winner=AB-ID actions=43 time=0.2s
+  match 6/10 first=AB-TT-D3 winner=AB-TT-D3 actions=42 time=0.1s
+  match 7/10 first=AB-ID winner=AB-ID actions=64 time=0.2s
+  match 8/10 first=AB-TT-D3 winner=AB-TT-D3 actions=64 time=0.2s
+  match 9/10 first=AB-ID winner=AB-TT-D3 actions=70 time=0.2s
+  match 10/10 first=AB-TT-D3 winner=AB-ID actions=70 time=0.2s
+--- Pair 52: AB-ID vs AB-Q-D2 ---
+  match 1/10 first=AB-ID winner=AB-ID actions=79 time=0.2s
+  match 2/10 first=AB-Q-D2 winner=AB-ID actions=400 time=0.2s TIEBREAK
+  match 3/10 first=AB-ID winner=AB-ID actions=51 time=0.2s
+  match 4/10 first=AB-Q-D2 winner=AB-Q-D2 actions=49 time=0.3s
+  match 5/10 first=AB-ID winner=AB-ID actions=53 time=0.1s
+  match 6/10 first=AB-Q-D2 winner=AB-Q-D2 actions=53 time=0.2s
+  match 7/10 first=AB-ID winner=AB-Q-D2 actions=87 time=0.2s
+  match 8/10 first=AB-Q-D2 winner=AB-Q-D2 actions=400 time=0.1s TIEBREAK
+  match 9/10 first=AB-ID winner=AB-ID actions=400 time=0.2s TIEBREAK
+  match 10/10 first=AB-Q-D2 winner=AB-Q-D2 actions=56 time=0.1s
+--- Pair 53: AB-ID vs AB-Q-D2 ---
+  match 1/10 first=AB-ID winner=AB-ID actions=93 time=0.5s
+  match 2/10 first=AB-Q-D2 winner=AB-Q-D2 actions=93 time=0.4s
+  match 3/10 first=AB-ID winner=AB-Q-D2 actions=58 time=0.5s
+  match 4/10 first=AB-Q-D2 winner=AB-ID actions=80 time=0.4s
+  match 5/10 first=AB-ID winner=AB-ID actions=61 time=0.3s
+  match 6/10 first=AB-Q-D2 winner=AB-Q-D2 actions=68 time=0.4s
+  match 7/10 first=AB-ID winner=AB-ID actions=400 time=0.4s TIEBREAK
+  match 8/10 first=AB-Q-D2 winner=AB-Q-D2 actions=400 time=0.3s TIEBREAK
+  match 9/10 first=AB-ID winner=AB-Q-D2 actions=70 time=1.1s
+  match 10/10 first=AB-Q-D2 winner=AB-ID actions=70 time=0.8s
+--- Pair 54: AB-ID vs AB-PVS-D3 ---
+  match 1/10 first=AB-ID winner=AB-PVS-D3 actions=97 time=0.2s
+  match 2/10 first=AB-PVS-D3 winner=AB-ID actions=97 time=0.2s
+  match 3/10 first=AB-ID winner=AB-PVS-D3 actions=53 time=0.3s
+  match 4/10 first=AB-PVS-D3 winner=AB-ID actions=101 time=0.3s
+  match 5/10 first=AB-ID winner=AB-PVS-D3 actions=113 time=0.2s
+  match 6/10 first=AB-PVS-D3 winner=AB-ID actions=113 time=0.2s
+  match 7/10 first=AB-ID winner=AB-ID actions=52 time=0.2s
+  match 8/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=52 time=0.2s
+  match 9/10 first=AB-ID winner=AB-PVS-D3 actions=72 time=0.4s
+  match 10/10 first=AB-PVS-D3 winner=AB-ID actions=72 time=0.3s
+--- Pair 55: AB-ID vs EXP-D2 ---
+  match 1/10 first=AB-ID winner=AB-ID actions=57 time=0.2s
+  match 2/10 first=EXP-D2 winner=EXP-D2 actions=53 time=0.2s
+  match 3/10 first=AB-ID winner=AB-ID actions=51 time=0.2s
+  match 4/10 first=EXP-D2 winner=AB-ID actions=69 time=0.2s
+  match 5/10 first=AB-ID winner=AB-ID actions=31 time=0.2s
+  match 6/10 first=EXP-D2 winner=EXP-D2 actions=42 time=0.1s
+  match 7/10 first=AB-ID winner=AB-ID actions=60 time=0.2s
+  match 8/10 first=EXP-D2 winner=AB-ID actions=61 time=0.2s
+  match 9/10 first=AB-ID winner=AB-ID actions=58 time=0.2s
+  match 10/10 first=EXP-D2 winner=AB-ID actions=67 time=0.2s
+--- Pair 56: AB-ID vs PIMC-D2 ---
+  match 1/10 first=AB-ID winner=PIMC-D2 actions=62 time=0.4s
+  match 2/10 first=PIMC-D2 winner=AB-ID actions=71 time=0.3s
+  match 3/10 first=AB-ID winner=AB-ID actions=61 time=1.4s
+  match 4/10 first=PIMC-D2 winner=PIMC-D2 actions=61 time=1.6s
+  match 5/10 first=AB-ID winner=PIMC-D2 actions=72 time=0.5s
+  match 6/10 first=PIMC-D2 winner=AB-ID actions=72 time=0.3s
+  match 7/10 first=AB-ID winner=AB-ID actions=60 time=0.3s
+  match 8/10 first=PIMC-D2 winner=PIMC-D2 actions=67 time=0.4s
+  match 9/10 first=AB-ID winner=AB-ID actions=65 time=0.5s
+  match 10/10 first=PIMC-D2 winner=PIMC-D2 actions=67 time=0.3s
+--- Pair 57: AB-ID vs MCTS-300 ---
+  match 1/10 first=AB-ID winner=AB-ID actions=28 time=0.1s
+  match 2/10 first=MCTS-300 winner=MCTS-300 actions=62 time=0.6s
+  match 3/10 first=AB-ID winner=AB-ID actions=17 time=0.2s
+  match 4/10 first=MCTS-300 winner=AB-ID actions=52 time=0.4s
+  match 5/10 first=AB-ID winner=AB-ID actions=28 time=0.2s
+  match 6/10 first=MCTS-300 winner=MCTS-300 actions=43 time=0.4s
+  match 7/10 first=AB-ID winner=AB-ID actions=17 time=0.1s
+  match 8/10 first=MCTS-300 winner=MCTS-300 actions=53 time=0.4s
+  match 9/10 first=AB-ID winner=AB-ID actions=28 time=0.1s
+  match 10/10 first=MCTS-300 winner=AB-ID actions=73 time=0.4s
+--- Pair 58: AB-TT-D3 vs AB-Q-D2 ---
+  match 1/10 first=AB-TT-D3 winner=AB-TT-D3 actions=34 time=0.1s
+  match 2/10 first=AB-Q-D2 winner=AB-Q-D2 actions=49 time=0.1s
+  match 3/10 first=AB-TT-D3 winner=AB-TT-D3 actions=56 time=0.0s
+  match 4/10 first=AB-Q-D2 winner=AB-Q-D2 actions=56 time=0.0s
+  match 5/10 first=AB-TT-D3 winner=AB-Q-D2 actions=73 time=0.1s
+  match 6/10 first=AB-Q-D2 winner=AB-TT-D3 actions=73 time=0.1s
+  match 7/10 first=AB-TT-D3 winner=AB-TT-D3 actions=66 time=0.1s
+  match 8/10 first=AB-Q-D2 winner=AB-Q-D2 actions=62 time=0.1s
+  match 9/10 first=AB-TT-D3 winner=AB-TT-D3 actions=73 time=0.1s
+  match 10/10 first=AB-Q-D2 winner=AB-Q-D2 actions=400 time=0.1s TIEBREAK
+--- Pair 59: AB-TT-D3 vs AB-Q-D2 ---
+  match 1/10 first=AB-TT-D3 winner=AB-TT-D3 actions=48 time=0.4s
+  match 2/10 first=AB-Q-D2 winner=AB-Q-D2 actions=48 time=0.6s
+  match 3/10 first=AB-TT-D3 winner=AB-Q-D2 actions=73 time=0.4s
+  match 4/10 first=AB-Q-D2 winner=AB-TT-D3 actions=71 time=0.3s
+  match 5/10 first=AB-TT-D3 winner=AB-TT-D3 actions=93 time=0.4s
+  match 6/10 first=AB-Q-D2 winner=AB-Q-D2 actions=66 time=0.4s
+  match 7/10 first=AB-TT-D3 winner=AB-Q-D2 actions=72 time=0.4s
+  match 8/10 first=AB-Q-D2 winner=AB-TT-D3 actions=70 time=0.5s
+  match 9/10 first=AB-TT-D3 winner=AB-Q-D2 actions=67 time=0.7s
+  match 10/10 first=AB-Q-D2 winner=AB-TT-D3 actions=68 time=0.2s
+--- Pair 60: AB-TT-D3 vs AB-PVS-D3 ---
+  match 1/10 first=AB-TT-D3 winner=AB-TT-D3 actions=66 time=0.1s
+  match 2/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=66 time=0.1s
+  match 3/10 first=AB-TT-D3 winner=AB-TT-D3 actions=75 time=0.1s
+  match 4/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=75 time=0.1s
+  match 5/10 first=AB-TT-D3 winner=AB-TT-D3 actions=48 time=0.1s
+  match 6/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=48 time=0.1s
+  match 7/10 first=AB-TT-D3 winner=AB-TT-D3 actions=44 time=0.1s
+  match 8/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=44 time=0.1s
+  match 9/10 first=AB-TT-D3 winner=AB-TT-D3 actions=49 time=0.1s
+  match 10/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=49 time=0.1s
+--- Pair 61: AB-TT-D3 vs EXP-D2 ---
+  match 1/10 first=AB-TT-D3 winner=AB-TT-D3 actions=41 time=0.1s
+  match 2/10 first=EXP-D2 winner=EXP-D2 actions=49 time=0.1s
+  match 3/10 first=AB-TT-D3 winner=AB-TT-D3 actions=82 time=0.1s
+  match 4/10 first=EXP-D2 winner=EXP-D2 actions=59 time=0.1s
+  match 5/10 first=AB-TT-D3 winner=AB-TT-D3 actions=85 time=0.1s
+  match 6/10 first=EXP-D2 winner=EXP-D2 actions=62 time=0.1s
+  match 7/10 first=AB-TT-D3 winner=AB-TT-D3 actions=59 time=0.1s
+  match 8/10 first=EXP-D2 winner=AB-TT-D3 actions=62 time=0.3s
+  match 9/10 first=AB-TT-D3 winner=AB-TT-D3 actions=66 time=0.1s
+  match 10/10 first=EXP-D2 winner=EXP-D2 actions=47 time=0.1s
+--- Pair 62: AB-TT-D3 vs PIMC-D2 ---
+  match 1/10 first=AB-TT-D3 winner=AB-TT-D3 actions=110 time=0.3s
+  match 2/10 first=PIMC-D2 winner=PIMC-D2 actions=49 time=0.3s
+  match 3/10 first=AB-TT-D3 winner=PIMC-D2 actions=70 time=0.4s
+  match 4/10 first=PIMC-D2 winner=AB-TT-D3 actions=73 time=0.4s
+  match 5/10 first=AB-TT-D3 winner=PIMC-D2 actions=58 time=0.5s
+  match 6/10 first=PIMC-D2 winner=AB-TT-D3 actions=75 time=0.3s
+  match 7/10 first=AB-TT-D3 winner=AB-TT-D3 actions=51 time=0.3s
+  match 8/10 first=PIMC-D2 winner=PIMC-D2 actions=51 time=0.3s
+  match 9/10 first=AB-TT-D3 winner=PIMC-D2 actions=60 time=0.2s
+  match 10/10 first=PIMC-D2 winner=AB-TT-D3 actions=59 time=0.3s
+--- Pair 63: AB-TT-D3 vs MCTS-300 ---
+  match 1/10 first=AB-TT-D3 winner=AB-TT-D3 actions=17 time=0.1s
+  match 2/10 first=MCTS-300 winner=AB-TT-D3 actions=50 time=0.3s
+  match 3/10 first=AB-TT-D3 winner=AB-TT-D3 actions=23 time=0.1s
+  match 4/10 first=MCTS-300 winner=AB-TT-D3 actions=78 time=0.4s
+  match 5/10 first=AB-TT-D3 winner=AB-TT-D3 actions=17 time=0.1s
+  match 6/10 first=MCTS-300 winner=MCTS-300 actions=74 time=0.5s
+  match 7/10 first=AB-TT-D3 winner=AB-TT-D3 actions=17 time=0.1s
+  match 8/10 first=MCTS-300 winner=AB-TT-D3 actions=64 time=0.3s
+  match 9/10 first=AB-TT-D3 winner=AB-TT-D3 actions=21 time=0.1s
+  match 10/10 first=MCTS-300 winner=AB-TT-D3 actions=51 time=0.3s
+--- Pair 64: AB-Q-D2 vs AB-Q-D2 ---
+  match 1/10 first=AB-Q-D2 winner=AB-Q-D2 actions=65 time=0.3s
+  match 2/10 first=AB-Q-D2 winner=AB-Q-D2 actions=75 time=0.2s
+  match 3/10 first=AB-Q-D2 winner=AB-Q-D2 actions=46 time=0.3s
+  match 4/10 first=AB-Q-D2 winner=AB-Q-D2 actions=45 time=0.4s
+  match 5/10 first=AB-Q-D2 winner=AB-Q-D2 actions=102 time=0.3s
+  match 6/10 first=AB-Q-D2 winner=AB-Q-D2 actions=61 time=0.4s
+  match 7/10 first=AB-Q-D2 winner=AB-Q-D2 actions=42 time=0.3s
+  match 8/10 first=AB-Q-D2 winner=AB-Q-D2 actions=41 time=0.2s
+  match 9/10 first=AB-Q-D2 winner=AB-Q-D2 actions=60 time=0.2s
+  match 10/10 first=AB-Q-D2 winner=AB-Q-D2 actions=69 time=0.6s
+--- Pair 65: AB-Q-D2 vs AB-PVS-D3 ---
+  match 1/10 first=AB-Q-D2 winner=AB-Q-D2 actions=400 time=0.1s TIEBREAK
+  match 2/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=36 time=0.1s
+  match 3/10 first=AB-Q-D2 winner=AB-Q-D2 actions=49 time=0.1s
+  match 4/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=55 time=0.1s
+  match 5/10 first=AB-Q-D2 winner=AB-PVS-D3 actions=63 time=0.1s
+  match 6/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=400 time=0.1s TIEBREAK
+  match 7/10 first=AB-Q-D2 winner=AB-PVS-D3 actions=70 time=0.2s
+  match 8/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=74 time=0.1s
+  match 9/10 first=AB-Q-D2 winner=AB-Q-D2 actions=62 time=0.1s
+  match 10/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=65 time=0.1s
+--- Pair 66: AB-Q-D2 vs EXP-D2 ---
+  match 1/10 first=AB-Q-D2 winner=AB-Q-D2 actions=37 time=0.1s
+  match 2/10 first=EXP-D2 winner=EXP-D2 actions=53 time=0.1s
+  match 3/10 first=AB-Q-D2 winner=AB-Q-D2 actions=45 time=0.1s
+  match 4/10 first=EXP-D2 winner=EXP-D2 actions=50 time=0.1s
+  match 5/10 first=AB-Q-D2 winner=AB-Q-D2 actions=73 time=0.1s
+  match 6/10 first=EXP-D2 winner=AB-Q-D2 actions=59 time=0.1s
+  match 7/10 first=AB-Q-D2 winner=AB-Q-D2 actions=46 time=0.1s
+  match 8/10 first=EXP-D2 winner=AB-Q-D2 actions=72 time=0.1s
+  match 9/10 first=AB-Q-D2 winner=AB-Q-D2 actions=44 time=0.1s
+  match 10/10 first=EXP-D2 winner=EXP-D2 actions=71 time=0.1s
+--- Pair 67: AB-Q-D2 vs PIMC-D2 ---
+  match 1/10 first=AB-Q-D2 winner=AB-Q-D2 actions=72 time=0.3s
+  match 2/10 first=PIMC-D2 winner=PIMC-D2 actions=51 time=0.3s
+  match 3/10 first=AB-Q-D2 winner=AB-Q-D2 actions=68 time=0.2s
+  match 4/10 first=PIMC-D2 winner=PIMC-D2 actions=89 time=0.2s
+  match 5/10 first=AB-Q-D2 winner=PIMC-D2 actions=68 time=0.3s
+  match 6/10 first=PIMC-D2 winner=AB-Q-D2 actions=64 time=0.4s
+  match 7/10 first=AB-Q-D2 winner=AB-Q-D2 actions=56 time=0.2s
+  match 8/10 first=PIMC-D2 winner=PIMC-D2 actions=51 time=0.2s
+  match 9/10 first=AB-Q-D2 winner=AB-Q-D2 actions=63 time=0.3s
+  match 10/10 first=PIMC-D2 winner=PIMC-D2 actions=63 time=0.2s
+--- Pair 68: AB-Q-D2 vs MCTS-300 ---
+  match 1/10 first=AB-Q-D2 winner=AB-Q-D2 actions=21 time=0.1s
+  match 2/10 first=MCTS-300 winner=MCTS-300 actions=70 time=0.4s
+  match 3/10 first=AB-Q-D2 winner=AB-Q-D2 actions=23 time=0.0s
+  match 4/10 first=MCTS-300 winner=MCTS-300 actions=45 time=0.4s
+  match 5/10 first=AB-Q-D2 winner=AB-Q-D2 actions=21 time=0.0s
+  match 6/10 first=MCTS-300 winner=MCTS-300 actions=62 time=0.3s
+  match 7/10 first=AB-Q-D2 winner=AB-Q-D2 actions=23 time=0.1s
+  match 8/10 first=MCTS-300 winner=MCTS-300 actions=60 time=0.4s
+  match 9/10 first=AB-Q-D2 winner=AB-Q-D2 actions=31 time=0.1s
+  match 10/10 first=MCTS-300 winner=AB-Q-D2 actions=48 time=0.3s
+--- Pair 69: AB-Q-D2 vs AB-PVS-D3 ---
+  match 1/10 first=AB-Q-D2 winner=AB-Q-D2 actions=400 time=0.4s TIEBREAK
+  match 2/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=400 time=0.4s TIEBREAK
+  match 3/10 first=AB-Q-D2 winner=AB-PVS-D3 actions=80 time=0.2s
+  match 4/10 first=AB-PVS-D3 winner=AB-Q-D2 actions=75 time=0.2s
+  match 5/10 first=AB-Q-D2 winner=AB-PVS-D3 actions=72 time=0.1s
+  match 6/10 first=AB-PVS-D3 winner=AB-Q-D2 actions=71 time=0.2s
+  match 7/10 first=AB-Q-D2 winner=AB-Q-D2 actions=47 time=0.6s
+  match 8/10 first=AB-PVS-D3 winner=AB-Q-D2 actions=79 time=0.4s
+  match 9/10 first=AB-Q-D2 winner=AB-Q-D2 actions=85 time=0.3s
+  match 10/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=83 time=0.3s
+--- Pair 70: AB-Q-D2 vs EXP-D2 ---
+  match 1/10 first=AB-Q-D2 winner=AB-Q-D2 actions=63 time=0.6s
+  match 2/10 first=EXP-D2 winner=AB-Q-D2 actions=77 time=0.3s
+  match 3/10 first=AB-Q-D2 winner=AB-Q-D2 actions=53 time=0.5s
+  match 4/10 first=EXP-D2 winner=AB-Q-D2 actions=73 time=0.6s
+  match 5/10 first=AB-Q-D2 winner=AB-Q-D2 actions=57 time=0.2s
+  match 6/10 first=EXP-D2 winner=EXP-D2 actions=400 time=0.2s TIEBREAK
+  match 7/10 first=AB-Q-D2 winner=AB-Q-D2 actions=53 time=0.2s
+  match 8/10 first=EXP-D2 winner=EXP-D2 actions=400 time=0.4s TIEBREAK
+  match 9/10 first=AB-Q-D2 winner=AB-Q-D2 actions=64 time=0.4s
+  match 10/10 first=EXP-D2 winner=EXP-D2 actions=49 time=0.2s
+--- Pair 71: AB-Q-D2 vs PIMC-D2 ---
+  match 1/10 first=AB-Q-D2 winner=PIMC-D2 actions=68 time=0.6s
+  match 2/10 first=PIMC-D2 winner=AB-Q-D2 actions=77 time=0.6s
+  match 3/10 first=AB-Q-D2 winner=AB-Q-D2 actions=43 time=0.4s
+  match 4/10 first=PIMC-D2 winner=PIMC-D2 actions=53 time=0.4s
+  match 5/10 first=AB-Q-D2 winner=AB-Q-D2 actions=68 time=0.4s
+  match 6/10 first=PIMC-D2 winner=AB-Q-D2 actions=63 time=0.7s
+  match 7/10 first=AB-Q-D2 winner=AB-Q-D2 actions=54 time=0.4s
+  match 8/10 first=PIMC-D2 winner=PIMC-D2 actions=49 time=0.4s
+  match 9/10 first=AB-Q-D2 winner=AB-Q-D2 actions=48 time=0.9s
+  match 10/10 first=PIMC-D2 winner=PIMC-D2 actions=64 time=0.5s
+--- Pair 72: AB-Q-D2 vs MCTS-300 ---
+  match 1/10 first=AB-Q-D2 winner=AB-Q-D2 actions=23 time=0.1s
+  match 2/10 first=MCTS-300 winner=AB-Q-D2 actions=75 time=0.6s
+  match 3/10 first=AB-Q-D2 winner=AB-Q-D2 actions=23 time=0.2s
+  match 4/10 first=MCTS-300 winner=MCTS-300 actions=76 time=0.5s
+  match 5/10 first=AB-Q-D2 winner=AB-Q-D2 actions=23 time=0.2s
+  match 6/10 first=MCTS-300 winner=AB-Q-D2 actions=66 time=0.7s
+  match 7/10 first=AB-Q-D2 winner=AB-Q-D2 actions=17 time=0.2s
+  match 8/10 first=MCTS-300 winner=MCTS-300 actions=79 time=0.6s
+  match 9/10 first=AB-Q-D2 winner=AB-Q-D2 actions=23 time=0.2s
+  match 10/10 first=MCTS-300 winner=AB-Q-D2 actions=71 time=0.4s
+--- Pair 73: AB-PVS-D3 vs EXP-D2 ---
+  match 1/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=72 time=0.2s
+  match 2/10 first=EXP-D2 winner=AB-PVS-D3 actions=65 time=0.1s
+  match 3/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=43 time=0.1s
+  match 4/10 first=EXP-D2 winner=EXP-D2 actions=50 time=0.1s
+  match 5/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=62 time=0.2s
+  match 6/10 first=EXP-D2 winner=AB-PVS-D3 actions=75 time=0.1s
+  match 7/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=51 time=0.1s
+  match 8/10 first=EXP-D2 winner=AB-PVS-D3 actions=62 time=0.1s
+  match 9/10 first=AB-PVS-D3 winner=EXP-D2 actions=60 time=0.1s
+  match 10/10 first=EXP-D2 winner=EXP-D2 actions=46 time=0.1s
+--- Pair 74: AB-PVS-D3 vs PIMC-D2 ---
+  match 1/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=400 time=0.4s TIEBREAK
+  match 2/10 first=PIMC-D2 winner=AB-PVS-D3 actions=80 time=0.4s
+  match 3/10 first=AB-PVS-D3 winner=PIMC-D2 actions=68 time=0.2s
+  match 4/10 first=PIMC-D2 winner=AB-PVS-D3 actions=55 time=0.2s
+  match 5/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=49 time=0.2s
+  match 6/10 first=PIMC-D2 winner=PIMC-D2 actions=46 time=0.2s
+  match 7/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=61 time=1.4s
+  match 8/10 first=PIMC-D2 winner=PIMC-D2 actions=61 time=1.5s
+  match 9/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=95 time=0.4s
+  match 10/10 first=PIMC-D2 winner=PIMC-D2 actions=58 time=0.4s
+--- Pair 75: AB-PVS-D3 vs MCTS-300 ---
+  match 1/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=23 time=0.1s
+  match 2/10 first=MCTS-300 winner=MCTS-300 actions=81 time=0.5s
+  match 3/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=28 time=0.1s
+  match 4/10 first=MCTS-300 winner=MCTS-300 actions=49 time=0.3s
+  match 5/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=23 time=0.1s
+  match 6/10 first=MCTS-300 winner=MCTS-300 actions=71 time=0.4s
+  match 7/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=23 time=0.1s
+  match 8/10 first=MCTS-300 winner=MCTS-300 actions=61 time=0.4s
+  match 9/10 first=AB-PVS-D3 winner=AB-PVS-D3 actions=25 time=0.1s
+  match 10/10 first=MCTS-300 winner=MCTS-300 actions=69 time=0.4s
+--- Pair 76: EXP-D2 vs PIMC-D2 ---
+  match 1/10 first=EXP-D2 winner=EXP-D2 actions=49 time=0.3s
+  match 2/10 first=PIMC-D2 winner=PIMC-D2 actions=30 time=0.2s
+  match 3/10 first=EXP-D2 winner=PIMC-D2 actions=71 time=0.3s
+  match 4/10 first=PIMC-D2 winner=EXP-D2 actions=66 time=0.3s
+  match 5/10 first=EXP-D2 winner=EXP-D2 actions=400 time=0.3s TIEBREAK
+  match 6/10 first=PIMC-D2 winner=EXP-D2 actions=57 time=0.3s
+  match 7/10 first=EXP-D2 winner=EXP-D2 actions=56 time=0.6s
+  match 8/10 first=PIMC-D2 winner=PIMC-D2 actions=55 time=0.4s
+  match 9/10 first=EXP-D2 winner=EXP-D2 actions=62 time=0.5s
+  match 10/10 first=PIMC-D2 winner=PIMC-D2 actions=70 time=0.3s
+--- Pair 77: EXP-D2 vs MCTS-300 ---
+  match 1/10 first=EXP-D2 winner=EXP-D2 actions=17 time=0.0s
+  match 2/10 first=MCTS-300 winner=MCTS-300 actions=40 time=0.2s
+  match 3/10 first=EXP-D2 winner=EXP-D2 actions=23 time=0.1s
+  match 4/10 first=MCTS-300 winner=MCTS-300 actions=64 time=0.4s
+  match 5/10 first=EXP-D2 winner=EXP-D2 actions=23 time=0.1s
+  match 6/10 first=MCTS-300 winner=EXP-D2 actions=54 time=0.4s
+  match 7/10 first=EXP-D2 winner=EXP-D2 actions=18 time=0.1s
+  match 8/10 first=MCTS-300 winner=MCTS-300 actions=65 time=0.3s
+  match 9/10 first=EXP-D2 winner=EXP-D2 actions=17 time=0.1s
+  match 10/10 first=MCTS-300 winner=EXP-D2 actions=52 time=0.3s
+--- Pair 78: PIMC-D2 vs MCTS-300 ---
+  match 1/10 first=PIMC-D2 winner=PIMC-D2 actions=21 time=0.1s
+  match 2/10 first=MCTS-300 winner=PIMC-D2 actions=400 time=2.0s TIEBREAK
+  match 3/10 first=PIMC-D2 winner=PIMC-D2 actions=23 time=0.1s
+  match 4/10 first=MCTS-300 winner=MCTS-300 actions=47 time=0.4s
+  match 5/10 first=PIMC-D2 winner=PIMC-D2 actions=23 time=0.1s
+  match 6/10 first=MCTS-300 winner=MCTS-300 actions=44 time=0.4s
+  match 7/10 first=PIMC-D2 winner=PIMC-D2 actions=21 time=0.1s
+  match 8/10 first=MCTS-300 winner=MCTS-300 actions=50 time=0.5s
+  match 9/10 first=PIMC-D2 winner=PIMC-D2 actions=26 time=0.1s
+  match 10/10 first=MCTS-300 winner=PIMC-D2 actions=61 time=0.6s
+=== AI BENCHMARK FINISHED in 2.8 min ===
