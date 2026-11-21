@@ -11,6 +11,10 @@ public class SimCard
     public bool canAttack;
     public bool provoc;
 
+    public bool charge;
+    public bool divineShield;
+    public bool lifesteal;
+
     public SimCard Clone()
     {
         return new SimCard
@@ -21,7 +25,10 @@ public class SimCard
             attack = attack,
             hp = hp,
             canAttack = canAttack,
-            provoc = provoc
+            provoc = provoc,
+            charge = charge,
+            divineShield = divineShield,
+            lifesteal = lifesteal
         };
     }
 }
@@ -32,6 +39,8 @@ public class SimPlayerState
     public int mana;
     public int maxMana;
     public int heroHp = 30;
+    public int heroMaxHp = 30;
+    public int fatigue;
 
     public List<SimCard> hand = new List<SimCard>();
     public List<SimCard> board = new List<SimCard>();
@@ -43,6 +52,8 @@ public class SimPlayerState
         copy.mana = mana;
         copy.maxMana = maxMana;
         copy.heroHp = heroHp;
+        copy.heroMaxHp = heroMaxHp;
+        copy.fatigue = fatigue;
         copy.hand = CloneCards(hand);
         copy.board = CloneCards(board);
         copy.deck = CloneCards(deck);
@@ -75,6 +86,12 @@ public class SimGameState
     /// </summary>
     public int turnInRound = 0;
 
+    /// <summary>Сколько существ помещается на столе у каждого игрока.</summary>
+    public int maxBoardSize = 3;
+
+    /// <summary>Разовая компенсация второму игроку на его первый ход.</summary>
+    public int secondPlayerFirstTurnBonusMana = 0;
+
     /// <summary>
     /// Быстрое глубокое копирование состояния.
     /// Раньше здесь использовался JsonUtility, который на порядки медленнее
@@ -89,6 +106,8 @@ public class SimGameState
         copy.maxManaCap = maxManaCap;
         copy.isMyTurn = isMyTurn;
         copy.turnInRound = turnInRound;
+        copy.maxBoardSize = maxBoardSize;
+        copy.secondPlayerFirstTurnBonusMana = secondPlayerFirstTurnBonusMana;
         return copy;
     }
 }

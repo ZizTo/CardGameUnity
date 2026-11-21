@@ -19,15 +19,15 @@ public static class AIBenchmarkRunner
     [MenuItem("Tools/AI Benchmark/Run Gauntlet")]
     public static void RunGauntlet()
     {
-        RunInEditor(BenchmarkMode.Gauntlet, 6, 12345);
+        RunInEditor(BenchmarkMode.Gauntlet, 10, 12345);
     }
 
     [MenuItem("Tools/AI Benchmark/Run Round Robin")]
     public static void RunRoundRobin()
     {
-        // Полный round-robin дорогой: 12 профилей дают 66 пар.
-        // Начинайте с 2 партий на пару, чтобы оценить время.
-        RunInEditor(BenchmarkMode.RoundRobin, 2, 12345);
+        // Полный round-robin дорогой: 19 профилей дают 171 пару.
+        // Начинайте с 2-4 партий на пару, чтобы оценить время.
+        RunInEditor(BenchmarkMode.RoundRobin, 4, 12345);
     }
 
     private static void RunInEditor(BenchmarkMode mode, int matches, int seed)
@@ -56,7 +56,7 @@ public static class AIBenchmarkRunner
     public static void RunFromCommandLine()
     {
         BenchmarkMode mode = BenchmarkMode.Gauntlet;
-        int matches = 6;
+        int matches = 10;
         int seed = 12345;
 
         string[] args = Environment.GetCommandLineArgs();

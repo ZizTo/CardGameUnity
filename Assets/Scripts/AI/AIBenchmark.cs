@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
@@ -37,20 +37,31 @@ public class AIBenchmark : MonoBehaviour
     public string[] gauntletOpponents = new string[] { "Rule", "AB-D2" };
 
     [Tooltip("Число партий в каждой паре. Чётное значение даёт зеркальные пары.")]
-    public int matchesPerPair = 6;
+    public int matchesPerPair = 10;
 
     [Tooltip("Предохранитель от зависания: максимум действий в одной партии")]
-    public int maxActionsPerMatch = 400;
+    public int maxActionsPerMatch = 500;
 
     [Tooltip("Предохранитель: максимум секунд на одну партию (0 — без лимита)")]
-    public float maxMatchSeconds = 30f;
+    public float maxMatchSeconds = 60f;
 
     [Tooltip("Общий лимит времени бенчмарка в минутах (0 — без лимита)")]
-    public float maxTotalMinutes = 45f;
+    public float maxTotalMinutes = 60f;
 
     public int randomSeed = 12345;
     public bool alternateFirstPlayer = true;
     public bool useTiebreak = true;
+
+    [Header("Game Rules")]
+    public int heroHp = 30;
+    public int maxMana = 10;
+    public int boardSize = 3;
+    public int firstStartingHand = 4;
+    public int secondStartingHand = 4;
+    public int secondPlayerFirstTurnBonusMana = 1;
+
+    [Tooltip("Одинаковый порядок карт у обоих игроков — меньше влияния удачи добора")]
+    public bool identicalDecks = true;
 
     [Header("Output")]
     public string outputFolderName = "BenchmarkResults";
@@ -100,6 +111,7 @@ public class AIBenchmark : MonoBehaviour
         public double seconds;
         public bool aborted;
         public bool tiebreak;
+        public bool firstIsAgent1;
         public AgentMatchStats stats1 = new AgentMatchStats();
         public AgentMatchStats stats2 = new AgentMatchStats();
     }
@@ -129,6 +141,8 @@ public class AIBenchmark : MonoBehaviour
         public int winsB;
         public int draws;
         public int aborted;
+        public int firstWins;
+        public int secondWins;
         public double timeA;
         public double timeB;
         public long nodesA;
@@ -147,6 +161,11 @@ public class AIBenchmark : MonoBehaviour
         public int losses;
         public int draws;
         public int aborted;
+        public int tiebreaks;
+        public int firstMatches;
+        public int firstWins;
+        public int secondMatches;
+        public int secondWins;
         public int decisions;
         public double totalMs;
         public long nodes;
@@ -194,6 +213,21 @@ public class AIBenchmark : MonoBehaviour
                 return 1.96 * Math.Sqrt(p * (1.0 - p) / matches) * 100.0;
             }
         }
+
+        public double FirstWinRate
+        {
+            get { return firstMatches > 0 ? (double)firstWins / firstMatches * 100.0 : 0.0; }
+        }
+
+        public double SecondWinRate
+        {
+            get { return secondMatches > 0 ? (double)secondWins / secondMatches * 100.0 : 0.0; }
+        }
+
+        public double SeatBalancedWinRate
+        {
+            get { return (FirstWinRate + SecondWinRate) / 2.0; }
+        }
     }
 
     private List<ProfileEntry> profiles = new List<ProfileEntry>();
@@ -206,6 +240,16 @@ public class AIBenchmark : MonoBehaviour
     private Stopwatch totalTimer = new Stopwatch();
     private string outputDir;
     private DateTime startedAt;
+
+    private int totalFirstWins;
+    private int totalSecondWins;
+    private int totalDraws;
+    private int totalTiebreaks;
+    private int mirrorPairs;
+    private int sameWinnerPairs;
+    private int splitPairs;
+    private int firstSweepPairs;
+    private int mirrorDrawPairs;
 
     public void Start()
     {
@@ -223,7 +267,18 @@ public class AIBenchmark : MonoBehaviour
         matchRecords = new List<MatchRecord>();
         aggregates = new Dictionary<int, ProfileAggregate>();
 
+        totalFirstWins = 0;
+        totalSecondWins = 0;
+        totalDraws = 0;
+        totalTiebreaks = 0;
+        mirrorPairs = 0;
+        sameWinnerPairs = 0;
+        splitPairs = 0;
+        firstSweepPairs = 0;
+        mirrorDrawPairs = 0;
+
         profiles = BuildProfiles();
+        ValidateProfiles();
         for (int i = 0; i < profiles.Count; i++)
         {
             aggregates[i] = new ProfileAggregate
@@ -242,6 +297,11 @@ public class AIBenchmark : MonoBehaviour
         Log("Max actions per match: " + maxActionsPerMatch);
         Log("Max seconds per match: " + maxMatchSeconds.ToString("F1", CultureInfo.InvariantCulture));
         Log("Random seed: " + randomSeed);
+        Log("Hero HP: " + heroHp + ", max mana: " + maxMana + ", board size: " + boardSize);
+        Log("Starting hands: first=" + firstStartingHand + ", second=" + secondStartingHand);
+        Log("Second player first-turn bonus mana: " + secondPlayerFirstTurnBonusMana);
+        Log("Identical decks: " + identicalDecks);
+        Log("Deck size: " + CardCatalog.TotalCards);
         Log("");
         Log("Profiles:");
         for (int i = 0; i < profiles.Count; i++)
@@ -286,11 +346,28 @@ public class AIBenchmark : MonoBehaviour
         list.Add(new ProfileEntry("Minimax α-β + ID (100 мс)", "AB-ID", AiProfileFactory.IterativeDeepening(4, 100)));
         list.Add(new ProfileEntry("Minimax α-β + TT D=3", "AB-TT-D3", AiProfileFactory.Transposition(3)));
         list.Add(new ProfileEntry("Minimax α-β + quiescence D=2", "AB-Q-D2", AiProfileFactory.Quiescence(2)));
+        list.Add(new ProfileEntry("Minimax α-β + quiescence D=3", "AB-Q-D3", AiProfileFactory.Quiescence(3)));
+        list.Add(new ProfileEntry("Minimax α-β + quiescence D=4", "AB-Q-D4", AiProfileFactory.Quiescence(4)));
+        list.Add(new ProfileEntry("Minimax α-β + Q + TT D=3", "AB-Q-TT-D3", AiProfileFactory.QuiescenceTransposition(3)));
+        list.Add(new ProfileEntry("Minimax α-β + Q + TT D=4", "AB-Q-TT-D4", AiProfileFactory.QuiescenceTransposition(4)));
+        list.Add(new ProfileEntry("Minimax α-β + Q + TT + ID", "AB-Q-TT-ID", AiProfileFactory.QuiescenceTranspositionId(5, 150)));
+        list.Add(new ProfileEntry("Minimax α-β + Q + PVS D=3", "AB-Q-PVS-D3", AiProfileFactory.QuiescencePvs(3)));
+        list.Add(new ProfileEntry("Minimax α-β + Q + TT + PVS + ID", "AB-ALL", AiProfileFactory.AllFeatures(5, 200)));
         list.Add(new ProfileEntry("Minimax α-β + PVS D=3", "AB-PVS-D3", AiProfileFactory.Pvs(3)));
         list.Add(new ProfileEntry("Expectimax D=2", "EXP-D2", AiProfileFactory.Expectimax(2)));
         list.Add(new ProfileEntry("PIMC D=2 (6 детерминизаций)", "PIMC-D2", AiProfileFactory.Pimc(2, 6)));
         list.Add(new ProfileEntry("MCTS 300 итераций", "MCTS-300", AiProfileFactory.Mcts(300, 6)));
         return list;
+    }
+
+    private void ValidateProfiles()
+    {
+        HashSet<string> shortNames = new HashSet<string>();
+        for (int i = 0; i < profiles.Count; i++)
+        {
+            if (!shortNames.Add(profiles[i].shortName))
+                Debug.LogError("AIBenchmark: duplicate short profile name '" + profiles[i].shortName + "'");
+        }
     }
 
     private List<BenchmarkPair> BuildPairs(List<ProfileEntry> allProfiles)
@@ -371,6 +448,28 @@ public class AIBenchmark : MonoBehaviour
             else if (match.winner == 2) pairResult.winsB++;
             else pairResult.draws++;
             if (match.aborted) pairResult.aborted++;
+            if (match.tiebreak) totalTiebreaks++;
+
+            int firstAgent = firstIsA ? 1 : 2;
+            if (match.winner != 0)
+            {
+                if (match.winner == firstAgent) pairResult.firstWins++;
+                else pairResult.secondWins++;
+            }
+
+            bool firstIsAgent1 = firstIsA;
+            if (firstIsAgent1)
+            {
+                if (match.winner == 1) totalFirstWins++;
+                else if (match.winner == 2) totalSecondWins++;
+                else totalDraws++;
+            }
+            else
+            {
+                if (match.winner == 2) totalFirstWins++;
+                else if (match.winner == 1) totalSecondWins++;
+                else totalDraws++;
+            }
 
             pairResult.timeA += match.stats1.totalMs;
             pairResult.timeB += match.stats2.totalMs;
@@ -416,6 +515,7 @@ public class AIBenchmark : MonoBehaviour
     private MatchResult SimulateMatch(AiProfile profile1, AiProfile profile2, bool firstIsA, int seed)
     {
         MatchResult result = new MatchResult();
+        result.firstIsAgent1 = firstIsA;
         SimGameState state = CreateInitialState(seed);
 
         IAiAgent agent1 = CreateAgent(profile1);
@@ -558,11 +658,10 @@ public class AIBenchmark : MonoBehaviour
     private SimGameState CreateInitialState(int seed)
     {
         // state.me — сторона, которая ходит первой, state.enemy — вторая.
-        // Привязка к конкретному агенту выполняется через isAgent1Turn,
-        // поэтому в зеркальных партиях первый игрок всегда получает одну
-        // и ту же колоду, а второй — другую.
+        // Привязка к конкретному агенту выполняется через isAgent1Turn.
+        int secondSeed = identicalDecks ? seed : unchecked(seed * 31 + 17);
         SimPlayerState firstPlayer = CreatePlayer(seed);
-        SimPlayerState secondPlayer = CreatePlayer(unchecked(seed * 31 + 17));
+        SimPlayerState secondPlayer = CreatePlayer(secondSeed);
 
         SimGameState state = new SimGameState();
         state.me = firstPlayer;
@@ -570,24 +669,27 @@ public class AIBenchmark : MonoBehaviour
 
         // Первый ход даёт 1 ману, как и в игровом цикле Unity.
         state.orderKol = 1;
-        state.maxManaCap = 5;
+        state.maxManaCap = maxMana;
         state.isMyTurn = true;
         state.turnInRound = 0;
+        state.maxBoardSize = boardSize;
+        state.secondPlayerFirstTurnBonusMana = secondPlayerFirstTurnBonusMana;
         state.me.mana = 1;
         state.me.maxMana = 1;
         state.enemy.mana = 0;
         state.enemy.maxMana = 0;
 
-        DrawStartingHand(state.me, 3);
-        DrawStartingHand(state.enemy, 3);
+        DrawStartingHand(state.me, firstStartingHand);
+        DrawStartingHand(state.enemy, secondStartingHand);
         return state;
     }
 
     private SimPlayerState CreatePlayer(int seed)
     {
         SimPlayerState player = new SimPlayerState();
-        player.heroHp = 20;
-        player.deck = CreateDeck(seed);
+        player.heroHp = heroHp;
+        player.heroMaxHp = heroHp;
+        player.deck = CardCatalog.CreateDeck(seed);
         return player;
     }
 
@@ -599,43 +701,6 @@ public class AIBenchmark : MonoBehaviour
             player.deck.RemoveAt(0);
             card.canAttack = false;
             player.hand.Add(card);
-        }
-    }
-
-    private List<SimCard> CreateDeck(int seed)
-    {
-        List<SimCard> deck = new List<SimCard>();
-
-        AddCards(deck, "Goblin", 1, 1, 3, false, 4);
-        AddCards(deck, "Thief", 2, 3, 1, false, 3);
-        AddCards(deck, "Knight", 3, 3, 4, true, 3);
-        AddCards(deck, "Mage", 4, 5, 4, false, 2);
-
-        System.Random rng = new System.Random(seed);
-        for (int i = deck.Count - 1; i > 0; i--)
-        {
-            int j = rng.Next(i + 1);
-            SimCard temp = deck[i];
-            deck[i] = deck[j];
-            deck[j] = temp;
-        }
-
-        return deck;
-    }
-
-    private static void AddCards(List<SimCard> deck, string name, int mana, int attack,
-                                 int hp, bool provoc, int count)
-    {
-        for (int i = 0; i < count; i++)
-        {
-            deck.Add(new SimCard
-            {
-                cardName = name,
-                mana = mana,
-                attack = attack,
-                hp = hp,
-                provoc = provoc
-            });
         }
     }
 
@@ -681,6 +746,27 @@ public class AIBenchmark : MonoBehaviour
         {
             ga.aborted++;
             gb.aborted++;
+        }
+
+        if (match.tiebreak)
+        {
+            ga.tiebreaks++;
+            gb.tiebreaks++;
+        }
+
+        if (match.firstIsAgent1)
+        {
+            ga.firstMatches++;
+            gb.secondMatches++;
+            if (match.winner == 1) ga.firstWins++;
+            else if (match.winner == 2) gb.secondWins++;
+        }
+        else
+        {
+            gb.firstMatches++;
+            ga.secondMatches++;
+            if (match.winner == 2) gb.firstWins++;
+            else if (match.winner == 1) ga.secondWins++;
         }
 
         MergeStats(ga, match.stats1);
@@ -737,10 +823,51 @@ public class AIBenchmark : MonoBehaviour
         }
     }
 
+    private void ComputeMirrorStats()
+    {
+        mirrorPairs = 0;
+        sameWinnerPairs = 0;
+        splitPairs = 0;
+        firstSweepPairs = 0;
+        mirrorDrawPairs = 0;
+
+        var groups = matchRecords.GroupBy(r => new { r.pairIndex, Mirror = r.matchIndex / 2 });
+
+        foreach (var group in groups)
+        {
+            List<MatchRecord> records = group.ToList();
+            if (records.Count < 2)
+                continue;
+
+            mirrorPairs++;
+            MatchRecord first = records[0];
+            MatchRecord second = records[1];
+
+            if (first.winner == 0 || second.winner == 0)
+            {
+                mirrorDrawPairs++;
+                continue;
+            }
+
+            if (first.winner == second.winner)
+                sameWinnerPairs++;
+            else
+                splitPairs++;
+
+            int firstAgentFirstMatch = first.firstIsA ? 1 : 2;
+            int firstAgentSecondMatch = second.firstIsA ? 1 : 2;
+
+            if (first.winner == firstAgentFirstMatch && second.winner == firstAgentSecondMatch)
+                firstSweepPairs++;
+        }
+    }
+
     private void WriteReports(bool stoppedByTime)
     {
         if (string.IsNullOrEmpty(outputDir))
             return;
+
+        ComputeMirrorStats();
 
         WriteMatchesCsv();
         WritePairsCsv();
@@ -789,7 +916,7 @@ public class AIBenchmark : MonoBehaviour
     private void WritePairsCsv()
     {
         StringBuilder csv = new StringBuilder();
-        csv.AppendLine("pair;agent1;agent2;matches;wins1;wins2;draws;aborted;winrate1;winrate2;avg_ms1;avg_ms2;avg_nodes1;avg_nodes2");
+        csv.AppendLine("pair;agent1;agent2;matches;wins1;wins2;draws;aborted;first_wins;second_wins;first_winrate;winrate1;winrate2;avg_ms1;avg_ms2;avg_nodes1;avg_nodes2");
 
         for (int i = 0; i < pairResults.Count; i++)
         {
@@ -807,6 +934,9 @@ public class AIBenchmark : MonoBehaviour
                 pair.winsB.ToString(CultureInfo.InvariantCulture),
                 pair.draws.ToString(CultureInfo.InvariantCulture),
                 pair.aborted.ToString(CultureInfo.InvariantCulture),
+                pair.firstWins.ToString(CultureInfo.InvariantCulture),
+                pair.secondWins.ToString(CultureInfo.InvariantCulture),
+                F2(pair.firstWins + pair.secondWins > 0 ? pair.firstWins * 100.0 / (pair.firstWins + pair.secondWins) : 0.0),
                 F2(winRateA),
                 F2(winRateB),
                 F2(pair.decisionsA > 0 ? pair.timeA / pair.decisionsA : 0.0),
@@ -822,7 +952,7 @@ public class AIBenchmark : MonoBehaviour
     private void WriteSummaryCsv()
     {
         StringBuilder csv = new StringBuilder();
-        csv.AppendLine("rank;agent;short;matches;wins;losses;draws;aborted;winrate;ci95;avg_ms;avg_nodes;avg_depth;cutoff_rate;tt_rate;elo");
+        csv.AppendLine("rank;agent;short;matches;wins;losses;draws;aborted;tiebreaks;winrate;ci95;first_matches;first_wins;first_winrate;second_matches;second_wins;second_winrate;seat_balanced;avg_ms;avg_nodes;avg_depth;cutoff_rate;tt_rate;elo");
 
         List<ProfileAggregate> sorted = SortedAggregates();
         for (int i = 0; i < sorted.Count; i++)
@@ -838,8 +968,16 @@ public class AIBenchmark : MonoBehaviour
                 aggregate.losses.ToString(CultureInfo.InvariantCulture),
                 aggregate.draws.ToString(CultureInfo.InvariantCulture),
                 aggregate.aborted.ToString(CultureInfo.InvariantCulture),
+                aggregate.tiebreaks.ToString(CultureInfo.InvariantCulture),
                 F2(aggregate.WinRate),
                 F2(aggregate.Ci95),
+                aggregate.firstMatches.ToString(CultureInfo.InvariantCulture),
+                aggregate.firstWins.ToString(CultureInfo.InvariantCulture),
+                F2(aggregate.FirstWinRate),
+                aggregate.secondMatches.ToString(CultureInfo.InvariantCulture),
+                aggregate.secondWins.ToString(CultureInfo.InvariantCulture),
+                F2(aggregate.SecondWinRate),
+                F2(aggregate.SeatBalancedWinRate),
                 F2(aggregate.AvgMs),
                 F2(aggregate.AvgNodes),
                 F2(aggregate.AvgDepth),
@@ -861,6 +999,10 @@ public class AIBenchmark : MonoBehaviour
         md.AppendLine("- Режим: " + (mode == BenchmarkMode.Gauntlet ? "gauntlet" : "round-robin"));
         md.AppendLine("- Партий на пару: " + matchesPerPair);
         md.AppendLine("- Seed: " + randomSeed);
+        md.AppendLine("- HP героев: " + heroHp + ", max mana: " + maxMana + ", слотов на столе: " + boardSize);
+        md.AppendLine("- Стартовые руки: первый " + firstStartingHand + ", второй " + secondStartingHand);
+        md.AppendLine("- Бонус маны второму на первый ход: " + secondPlayerFirstTurnBonusMana);
+        md.AppendLine("- Одинаковые колоды: " + (identicalDecks ? "да" : "нет") + ", размер колоды: " + CardCatalog.TotalCards);
         md.AppendLine("- Общее время: " + F1(totalTimer.Elapsed.TotalMinutes) + " мин");
 
         if (stoppedByTime)
@@ -911,8 +1053,44 @@ public class AIBenchmark : MonoBehaviour
         }
 
         md.AppendLine();
+        md.AppendLine("## Статистика по первому ходу");
+        md.AppendLine();
+        md.AppendLine("| Вариант | Как первый: W/N | Winrate 1-го | Как второй: W/N | Winrate 2-го | Seat-balanced |");
+        md.AppendLine("|---|---:|---:|---:|---:|---:|");
+
+        for (int i = 0; i < sorted.Count; i++)
+        {
+            ProfileAggregate aggregate = sorted[i];
+            md.AppendLine("| " + aggregate.name + " | " +
+                          aggregate.firstWins + "/" + aggregate.firstMatches + " | " +
+                          F1(aggregate.FirstWinRate) + " | " +
+                          aggregate.secondWins + "/" + aggregate.secondMatches + " | " +
+                          F1(aggregate.SecondWinRate) + " | " +
+                          F1(aggregate.SeatBalancedWinRate) + " |");
+        }
+
+        md.AppendLine();
+        md.AppendLine("## Первый ход и зеркальные пары");
+        md.AppendLine();
+        int decisiveTotal = totalFirstWins + totalSecondWins;
+        double firstShare = decisiveTotal > 0 ? totalFirstWins * 100.0 / decisiveTotal : 0.0;
+        md.AppendLine("- Побед первого игрока: " + totalFirstWins + " (" + F1(firstShare) + "% решаемых партий)");
+        md.AppendLine("- Побед второго игрока: " + totalSecondWins);
+        md.AppendLine("- Ничьих/прерываний: " + totalDraws);
+        md.AppendLine("- Тай-брейков: " + totalTiebreaks);
+        double avgActions = matchRecords.Count > 0 ? matchRecords.Average(r => (double)r.actions) : 0.0;
+        double avgSeconds = matchRecords.Count > 0 ? matchRecords.Average(r => r.seconds) : 0.0;
+        md.AppendLine("- Среднее число действий: " + F1(avgActions));
+        md.AppendLine("- Средняя длительность: " + F1(avgSeconds) + " с");
+        md.AppendLine("- Зеркальных пар: " + mirrorPairs);
+        md.AppendLine("- Один и тот же агент выиграл обе партии: " + sameWinnerPairs);
+        md.AppendLine("- Победители разные: " + splitPairs);
+        md.AppendLine("- Первый игрок выиграл обе партии: " + firstSweepPairs);
+        md.AppendLine("- В зеркальной паре была ничья/прерывание: " + mirrorDrawPairs);
+
+        md.AppendLine();
         md.AppendLine("Время и узлы усреднены на одно решение агента. " +
-                      "Прерванные по таймауту партии считаются ничьими и отмечены в CSV.");
+                      "Партии, завершенные тай-брейком, отмечены в CSV.");
 
         WriteTextFile(Path.Combine(outputDir, "benchmark_summary.md"), md.ToString());
     }
@@ -980,3 +1158,4 @@ public class AIBenchmark : MonoBehaviour
         }
     }
 }
+

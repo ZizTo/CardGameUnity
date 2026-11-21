@@ -15,13 +15,13 @@ public static class SimRules
             case SimActionType.PlayCard:
             {
                 if (action.handIndex < 0 || action.handIndex >= state.me.hand.Count) return;
-                if (state.me.board.Count >= 3) return;
+                if (state.me.board.Count >= state.maxBoardSize) return;
 
                 var card = state.me.hand[action.handIndex];
                 if (card.mana > state.me.mana) return;
 
                 state.me.mana -= card.mana;
-                card.canAttack = false;
+                card.canAttack = card.charge;
                 state.me.board.Add(card);
                 state.me.hand.RemoveAt(action.handIndex);
                 break;
@@ -40,9 +40,30 @@ public static class SimRules
                 bool enemyHasProvoc = state.enemy.board.Any(c => c.provoc && c.hp > 0);
                 if (enemyHasProvoc && !target.provoc) return;
 
-                target.hp -= attacker.attack;
-                attacker.hp -= target.attack;
+                int damageToTarget = attacker.attack;
+                int damageToAttacker = target.attack;
+
+                if (target.divineShield && damageToTarget > 0)
+                {
+                    target.divineShield = false;
+                    damageToTarget = 0;
+                }
+
+                if (attacker.divineShield && damageToAttacker > 0)
+                {
+                    attacker.divineShield = false;
+                    damageToAttacker = 0;
+                }
+
+                target.hp -= damageToTarget;
+                attacker.hp -= damageToAttacker;
                 attacker.canAttack = false;
+
+                if (attacker.lifesteal && damageToTarget > 0)
+                    HealHero(state.me, damageToTarget);
+
+                if (target.lifesteal && damageToAttacker > 0)
+                    HealHero(state.enemy, damageToAttacker);
 
                 state.me.board.RemoveAll(c => c.hp <= 0);
                 state.enemy.board.RemoveAll(c => c.hp <= 0);
@@ -59,8 +80,12 @@ public static class SimRules
                 bool enemyHasProvoc = state.enemy.board.Any(c => c.provoc && c.hp > 0);
                 if (enemyHasProvoc) return;
 
-                state.enemy.heroHp -= attacker.attack;
+                int damage = attacker.attack;
+                state.enemy.heroHp -= damage;
                 attacker.canAttack = false;
+
+                if (attacker.lifesteal && damage > 0)
+                    HealHero(state.me, damage);
                 break;
             }
 
@@ -88,6 +113,13 @@ public static class SimRules
 
         int manaForTurn = state.orderKol > state.maxManaCap ? state.maxManaCap : state.orderKol;
 
+        // Компенсация второму игроку на его первый ход.
+        if (state.turnInRound == 1 && state.orderKol == 1)
+            manaForTurn += state.secondPlayerFirstTurnBonusMana;
+
+        if (manaForTurn > state.maxManaCap)
+            manaForTurn = state.maxManaCap;
+
         state.me.maxMana = manaForTurn;
         state.me.mana = manaForTurn;
 
@@ -97,7 +129,13 @@ public static class SimRules
         foreach (var card in state.enemy.board)
             card.canAttack = false;
 
-        if (state.me.deck.Count > 0 && state.me.hand.Count < 7)
+        if (state.me.deck.Count == 0)
+        {
+            // Усталость: игра не может длиться бесконечно после исчерпания колоды.
+            state.me.fatigue++;
+            state.me.heroHp -= state.me.fatigue;
+        }
+        else if (state.me.hand.Count < 7)
         {
             SimCard drawn;
             if (forcedDrawIndex >= 0 && forcedDrawIndex < state.me.deck.Count)
@@ -109,6 +147,15 @@ public static class SimRules
 
             state.me.hand.Add(drawn);
         }
+    }
+
+    private static void HealHero(SimPlayerState player, int amount)
+    {
+        if (amount <= 0) return;
+
+        player.heroHp += amount;
+        if (player.heroHp > player.heroMaxHp)
+            player.heroHp = player.heroMaxHp;
     }
 
     private static SimCard DrawCardAt(SimPlayerState player, int index)

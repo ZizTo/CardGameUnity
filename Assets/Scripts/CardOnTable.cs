@@ -10,6 +10,7 @@ public class CardOnTable : MonoBehaviour
     public int HP, Damage, Mana;
     public string Name, Desc;
     public bool CanAttack, Provoc;
+    public bool Charge, DivineShield, Lifesteal;
 
     public LineRenderer lineRenderer;
     bool mouseOn = false;
@@ -34,6 +35,9 @@ public class CardOnTable : MonoBehaviour
         if (hpT != null) { hpT.text = "" + HP; }
         if (nameT != null) { nameT.text = Name; }
         if (DescT != null) { DescT.text = Desc; }
+
+        if (Charge)
+            CanAttack = true;
 
         if (transform.parent.CompareTag("PlsEnemy"))
         {
@@ -88,13 +92,49 @@ public class CardOnTable : MonoBehaviour
     }
     public void DealDamage(GameObject enemy)
     {
-        enemy.GetComponent<CardOnTable>().HP -= Damage;
-        HP -= enemy.GetComponent<CardOnTable>().Damage;
+        CardOnTable target = enemy.GetComponent<CardOnTable>();
+        if (target == null) return;
+
+        int damageToTarget = Damage;
+        int damageToAttacker = target.Damage;
+
+        if (target.DivineShield && damageToTarget > 0)
+        {
+            target.DivineShield = false;
+            damageToTarget = 0;
+        }
+
+        if (DivineShield && damageToAttacker > 0)
+        {
+            DivineShield = false;
+            damageToAttacker = 0;
+        }
+
+        target.HP -= damageToTarget;
+        HP -= damageToAttacker;
         CanAttack = false;
+
+        if (Lifesteal && damageToTarget > 0)
+            HealOwner(damageToTarget);
+
+        if (target.Lifesteal && damageToAttacker > 0)
+            target.HealOwner(damageToAttacker);
+
         onTableAud.clip = clip[1];
         onTableAud.Play();
-        enemy.GetComponent<CardOnTable>().isAlive();
+        target.isAlive();
         isAlive();
+    }
+
+    private void HealOwner(int amount)
+    {
+        Order order = Camera.main.GetComponent<Order>();
+        if (order == null) return;
+
+        if (transform.parent.CompareTag("PlsEnemy"))
+            order.HealEnemy(amount);
+        else
+            order.HealPlayer(amount);
     }
 
     public void isAlive()
@@ -104,8 +144,8 @@ public class CardOnTable : MonoBehaviour
         {
             GameObject newExp = Instantiate(explosionPref);
             newExp.transform.position = transform.position;
-            if (gameObject.name == "Player") { PlayerPrefs.SetInt("WinOrNo", 2); SceneManager.LoadScene("Menu"); }
-            if (gameObject.name == "Enemy") { PlayerPrefs.SetInt("WinOrNo", 1); SceneManager.LoadScene("Menu"); }
+            if (gameObject.name == "Player") { PlayerPrefs.SetInt("WinOrNo", 2); SceneManager.LoadScene("Menu"); return; }
+            if (gameObject.name == "Enemy") { PlayerPrefs.SetInt("WinOrNo", 1); SceneManager.LoadScene("Menu"); return; }
             gameObject.transform.parent.GetComponent<Placeholders>().DelCard(gameObject);
             onTableAud.clip = clip[2];
             onTableAud.Play();

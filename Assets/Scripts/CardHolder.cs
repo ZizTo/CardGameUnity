@@ -14,11 +14,14 @@ public class CardHolder : MonoBehaviour
 
     private void Start()
     {
-        kolCardsTxt.text = "cards " + (cards.Count) + "/" + maxCardKol;
+        if (kolCardsTxt != null)
+            kolCardsTxt.text = "cards " + (cards.Count) + "/" + maxCardKol;
     }
 
     public void newCard(GameObject cardPref)
     {
+        if (cardPref == null) return;
+
         if (cards.Count < maxCardKol)
         {
             GameObject card = Instantiate(cardPref);
@@ -31,7 +34,8 @@ public class CardHolder : MonoBehaviour
 
     public void CardsKolChange()
     {
-        kolCardsTxt.text = "cards " + (cards.Count) + "/" + maxCardKol;
+        if (kolCardsTxt != null)
+            kolCardsTxt.text = "cards " + (cards.Count) + "/" + maxCardKol;
         for (int i = 0; i < cards.Count; i++)
         {
             if (cards.Count % 2 == 0) {

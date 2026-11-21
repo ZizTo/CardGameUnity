@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -10,7 +10,12 @@ public class Order : MonoBehaviour
 [Header("Turn")]
 public bool yourOrd = false;
 public int orderKol = 0;
-public int maxMana = 5;
+public int maxMana = 10;
+public int heroMaxHp = 30;
+public int secondPlayerFirstTurnBonusMana = 1;
+public int fatigueYou = 0;
+public int fatigueEnemy = 0;
+private bool enemyFirstTurnBonusApplied = false;
 
 [Header("Scene refs")]
 public GameObject yourHolder;
@@ -64,7 +69,40 @@ private void Awake()
 
 private void Start()
 {
+    enemyFirstTurnBonusApplied = false;
+    ShuffleDecks();
+    DealStartingHands();
     ChangeOrder();
+}
+
+private void ShuffleDecks()
+{
+    Deck yourDeck = yourHolder.GetComponent<Deck>();
+    Deck enemyDeck = enemyHolder.GetComponent<Deck>();
+    if (yourDeck != null) yourDeck.Shuffle();
+    if (enemyDeck != null) enemyDeck.Shuffle();
+}
+
+private void DealStartingHands()
+{
+    // Первый игрок получает 3 карты и добирает на первом ходу,
+    // второй — 4 карты и тоже добирает на своём первом ходу.
+    DealCards(yourHolder, 3);
+    DealCards(enemyHolder, 4);
+}
+
+private void DealCards(GameObject holder, int count)
+{
+    CardHolder hand = holder.GetComponent<CardHolder>();
+    Deck deck = holder.GetComponent<Deck>();
+    if (hand == null || deck == null) return;
+
+    for (int i = 0; i < count; i++)
+    {
+        GameObject card = deck.RandCard();
+        if (card == null) break;
+        hand.newCard(card);
+    }
 }
 
 public void ChangeManaYou(int kol)
@@ -142,6 +180,11 @@ public void ChangeOrder()
 
         if (yourHolder.GetComponent<Deck>().deck.Count > 0 && yourHolder.GetComponent<CardHolder>().cards.Count < yourHolder.GetComponent<CardHolder>().maxCardKol)
             yourHolder.GetComponent<CardHolder>().newCard(yourHolder.GetComponent<Deck>().RandCard());
+        else if (yourHolder.GetComponent<Deck>().deck.Count == 0)
+        {
+            fatigueYou++;
+            if (!DamageHero("Player", fatigueYou)) return;
+        }
 
         if (yourHolder.GetComponent<Deck>().deck.Count == 0)
             yourHolder.GetComponent<CardHolder>().Deck.SetActive(false);
@@ -153,6 +196,17 @@ public void ChangeOrder()
     {
         if (enemyHolder.GetComponent<Deck>().deck.Count > 0 && enemyHolder.GetComponent<CardHolder>().cards.Count < enemyHolder.GetComponent<CardHolder>().maxCardKol)
             enemyHolder.GetComponent<CardHolder>().newCard(enemyHolder.GetComponent<Deck>().RandCard());
+        else if (enemyHolder.GetComponent<Deck>().deck.Count == 0)
+        {
+            fatigueEnemy++;
+            if (!DamageHero("Enemy", fatigueEnemy)) return;
+        }
+
+        if (!enemyFirstTurnBonusApplied)
+        {
+            ChangeManaEnemy(secondPlayerFirstTurnBonusMana);
+            enemyFirstTurnBonusApplied = true;
+        }
 
         if (enemyHolder.GetComponent<Deck>().deck.Count == 0)
             enemyHolder.GetComponent<CardHolder>().Deck.SetActive(false);
@@ -313,7 +367,10 @@ private SimCard BuildSimCardFromPrefab(GameObject cardPrefab)
         attack = c.Damage,
         hp = c.HP,
         canAttack = false,
-        provoc = c.Provoc
+        provoc = c.Provoc,
+        charge = c.Charge,
+        divineShield = c.DivineShield,
+        lifesteal = c.Lifesteal
     };
 }
 
@@ -357,14 +414,20 @@ private SimGameState BuildStateFromScene()
 
     state.orderKol = orderKol;
     state.maxManaCap = maxMana;
+    state.maxBoardSize = enemyPlc.GetComponent<Placeholders>().placeholders.Count;
+    state.secondPlayerFirstTurnBonusMana = 0;
     state.me.mana = manaEnemy;
     state.me.maxMana = maxMana;
     state.me.heroHp = GetEnemyHeroHp();
+    state.me.heroMaxHp = heroMaxHp;
+    state.me.fatigue = fatigueEnemy;
     state.me.deck = BuildEnemyDeck();
 
     state.enemy.mana = manaYou;
     state.enemy.maxMana = maxMana;
     state.enemy.heroHp = GetPlayerHeroHp();
+    state.enemy.heroMaxHp = heroMaxHp;
+    state.enemy.fatigue = fatigueYou;
     state.enemy.deck = BuildYourDeck();
 
     List<GameObject> enemyHand = enemyHolder.GetComponent<CardHolder>().cards;
@@ -385,7 +448,10 @@ private SimGameState BuildStateFromScene()
             attack = c.Damage,
             hp = c.HP,
             canAttack = false,
-            provoc = c.Provoc
+            provoc = c.Provoc,
+            charge = c.Charge,
+            divineShield = c.DivineShield,
+            lifesteal = c.Lifesteal
         });
     }
 
@@ -394,6 +460,7 @@ private SimGameState BuildStateFromScene()
     {
         GameObject cardObj = enemySlots[i];
         if (cardObj == null || !cardObj.CompareTag("TableCard")) continue;
+        if (cardObj.name == "Player" || cardObj.name == "Enemy") continue;
         CardOnTable c = cardObj.GetComponent<CardOnTable>();
         if (c == null) continue;
 
@@ -405,7 +472,10 @@ private SimGameState BuildStateFromScene()
             attack = c.Damage,
             hp = c.HP,
             canAttack = c.CanAttack,
-            provoc = c.Provoc
+            provoc = c.Provoc,
+            charge = c.Charge,
+            divineShield = c.DivineShield,
+            lifesteal = c.Lifesteal
         });
         enemyBoardSlotMap.Add(i);
     }
@@ -428,7 +498,10 @@ private SimGameState BuildStateFromScene()
             attack = c.Damage,
             hp = c.HP,
             canAttack = false,
-            provoc = c.Provoc
+            provoc = c.Provoc,
+            charge = c.Charge,
+            divineShield = c.DivineShield,
+            lifesteal = c.Lifesteal
         });
     }
 
@@ -437,6 +510,7 @@ private SimGameState BuildStateFromScene()
     {
         GameObject cardObj = yourSlots[i];
         if (cardObj == null || !cardObj.CompareTag("TableCard")) continue;
+        if (cardObj.name == "Player" || cardObj.name == "Enemy") continue;
         CardOnTable c = cardObj.GetComponent<CardOnTable>();
         if (c == null) continue;
 
@@ -448,7 +522,10 @@ private SimGameState BuildStateFromScene()
             attack = c.Damage,
             hp = c.HP,
             canAttack = c.CanAttack,
-            provoc = c.Provoc
+            provoc = c.Provoc,
+            charge = c.Charge,
+            divineShield = c.DivineShield,
+            lifesteal = c.Lifesteal
         });
         yourBoardSlotMap.Add(i);
     }
@@ -644,6 +721,8 @@ private void ExecuteActionInScene(SimAction action)
 
             hero.HP -= attacker.Damage;
             attacker.CanAttack = false;
+            if (attacker.Lifesteal && attacker.Damage > 0)
+                HealEnemy(attacker.Damage);
             hero.isAlive();
             StartCoroutine(EnemyThinkCoroutine());
             break;
@@ -695,5 +774,42 @@ private int GetEnemyHeroHp()
     if (enemyHero != null)
         return enemyHero.GetComponent<CardOnTable>().HP;
     return 30;
+}
+
+public void HealPlayer(int amount)
+{
+    HealHero("Player", amount);
+}
+
+public void HealEnemy(int amount)
+{
+    HealHero("Enemy", amount);
+}
+
+private void HealHero(string heroName, int amount)
+{
+    if (amount <= 0) return;
+
+    GameObject heroObject = GameObject.Find(heroName);
+    if (heroObject == null) return;
+
+    CardOnTable hero = heroObject.GetComponent<CardOnTable>();
+    if (hero == null) return;
+
+    hero.HP = Mathf.Min(heroMaxHp, hero.HP + amount);
+    if (hero.hpT != null) hero.hpT.text = "" + hero.HP;
+}
+
+private bool DamageHero(string heroName, int amount)
+{
+    GameObject heroObject = GameObject.Find(heroName);
+    if (heroObject == null) return false;
+
+    CardOnTable hero = heroObject.GetComponent<CardOnTable>();
+    if (hero == null) return false;
+
+    hero.HP -= amount;
+    hero.isAlive();
+    return hero.HP > 0;
 }
 }

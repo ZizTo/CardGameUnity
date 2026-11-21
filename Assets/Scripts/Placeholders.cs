@@ -12,6 +12,10 @@ public class Placeholders : MonoBehaviour
     {
         foreach (Transform plc in GetComponentInChildren<Transform>())
         {
+            // Герои — тоже дочерние объекты зоны, но они не являются слотами стола.
+            if (plc.gameObject.name == "Player" || plc.gameObject.name == "Enemy")
+                continue;
+
             placeholders.Add(plc.gameObject);
             placePositions.Add(plc.position);
         }
@@ -47,6 +51,13 @@ public class Placeholders : MonoBehaviour
             }
             id++;
         }
+
+        if (id < 0 || id >= placeholders.Count)
+        {
+            Destroy(card);
+            return;
+        }
+
         Destroy(placeholders[id]);
         GameObject crd = Instantiate(placeholderPref);
         placeholders[id] = crd;

@@ -72,6 +72,39 @@ public static class AiProfileFactory
         return p;
     }
 
+    public static AiProfile QuiescenceTransposition(int depth)
+    {
+        AiProfile p = Quiescence(depth);
+        p.useTranspositionTable = true;
+        return p;
+    }
+
+    public static AiProfile QuiescencePvs(int depth)
+    {
+        AiProfile p = Quiescence(depth);
+        p.usePvs = true;
+        p.useTranspositionTable = true;
+        return p;
+    }
+
+    public static AiProfile QuiescenceTranspositionId(int maxDepth, int timeLimitMs)
+    {
+        AiProfile p = QuiescenceTransposition(maxDepth);
+        p.useIterativeDeepening = true;
+        p.timeLimitMs = timeLimitMs;
+        return p;
+    }
+
+    public static AiProfile AllFeatures(int maxDepth, int timeLimitMs)
+    {
+        AiProfile p = Quiescence(maxDepth);
+        p.useTranspositionTable = true;
+        p.usePvs = true;
+        p.useIterativeDeepening = true;
+        p.timeLimitMs = timeLimitMs;
+        return p;
+    }
+
     public static AiProfile Pvs(int depth)
     {
         AiProfile p = AlphaBeta(depth);

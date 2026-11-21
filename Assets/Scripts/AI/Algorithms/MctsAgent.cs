@@ -155,9 +155,11 @@ public class MctsAgent : IAiAgent
         score += target.attack * 4.0f;
         score += target.hp * 1.5f;
         if (target.provoc) score += 8f;
+        if (target.divineShield) score += 5f;
+        if (target.lifesteal) score += 2f;
         if (target.canAttack) score += 8f;
         if (attacker.attack >= target.hp) score += 12f;
-        if (target.attack >= attacker.hp) score -= 3f;
+        if (target.attack >= attacker.hp && !attacker.divineShield) score -= 3f;
 
         return score;
     }
@@ -177,7 +179,12 @@ public class MctsAgent : IAiAgent
     private float PlayScore(SimGameState state, SimAction action)
     {
         var c = state.me.hand[action.handIndex];
-        return c.attack * 2.2f + c.hp * 1.8f + (c.provoc ? 3f : 0f) - c.mana * 0.3f;
+        float score = c.attack * 2.2f + c.hp * 1.8f - c.mana * 0.3f;
+        if (c.provoc) score += 3f;
+        if (c.charge) score += c.attack * 1.2f;
+        if (c.divineShield) score += 2.5f;
+        if (c.lifesteal) score += 1.5f;
+        return score;
     }
 
     private bool ShouldEndTurn(SimGameState state)

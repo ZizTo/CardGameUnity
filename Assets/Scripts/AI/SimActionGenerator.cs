@@ -9,7 +9,7 @@ public static class SimActionGenerator
 
         for (int i = 0; i < state.me.hand.Count; i++)
         {
-            if (state.me.hand[i].mana <= state.me.mana && state.me.board.Count < 3)
+            if (state.me.hand[i].mana <= state.me.mana && state.me.board.Count < state.maxBoardSize)
             {
                 actions.Add(new SimAction
                 {

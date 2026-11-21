@@ -557,7 +557,12 @@ public class MinimaxAgent : IAiAgent, IAiStatsProvider
                 if (action.handIndex < 0 || action.handIndex >= state.me.hand.Count)
                     return -1000f;
                 SimCard card = state.me.hand[action.handIndex];
-                return card.attack * 3f + card.hp * 2.5f + (card.provoc ? 6f : 0f) - card.mana * 0.2f;
+                float score = card.attack * 3f + card.hp * 2.5f - card.mana * 0.2f;
+                if (card.provoc) score += 6f;
+                if (card.charge) score += card.attack * 1.5f;
+                if (card.divineShield) score += 4f;
+                if (card.lifesteal) score += 2f;
+                return score;
             }
 
             case SimActionType.AttackCard:
@@ -571,8 +576,10 @@ public class MinimaxAgent : IAiAgent, IAiStatsProvider
                 SimCard target = state.enemy.board[action.targetIndex];
 
                 float score = target.attack * 4f + target.hp * 2.5f + (target.provoc ? 12f : 0f);
+                if (target.divineShield) score += 5f;
+                if (target.lifesteal) score += 2f;
                 if (attacker.attack >= target.hp) score += 20f;
-                if (target.attack >= attacker.hp) score -= 6f;
+                if (target.attack >= attacker.hp && !attacker.divineShield) score -= 6f;
                 return score;
             }
 
@@ -634,6 +641,8 @@ public class MinimaxAgent : IAiAgent, IAiStatsProvider
         Mix(ref hash, state.orderKol);
         Mix(ref hash, state.maxManaCap);
         Mix(ref hash, state.turnInRound);
+        Mix(ref hash, state.maxBoardSize);
+        Mix(ref hash, state.secondPlayerFirstTurnBonusMana);
         Mix(ref hash, actionsThisTurn);
         MixPlayer(ref hash, state.me);
         MixPlayer(ref hash, state.enemy);
@@ -643,6 +652,8 @@ public class MinimaxAgent : IAiAgent, IAiStatsProvider
     private static void MixPlayer(ref ulong hash, SimPlayerState player)
     {
         Mix(ref hash, player.heroHp);
+        Mix(ref hash, player.heroMaxHp);
+        Mix(ref hash, player.fatigue);
         Mix(ref hash, player.mana);
         Mix(ref hash, player.maxMana);
         Mix(ref hash, player.hand.Count);
@@ -663,6 +674,9 @@ public class MinimaxAgent : IAiAgent, IAiStatsProvider
         Mix(ref hash, card.hp);
         Mix(ref hash, card.canAttack ? 1 : 0);
         Mix(ref hash, card.provoc ? 1 : 0);
+        Mix(ref hash, card.charge ? 1 : 0);
+        Mix(ref hash, card.divineShield ? 1 : 0);
+        Mix(ref hash, card.lifesteal ? 1 : 0);
     }
 
     private static void Mix(ref ulong hash, int value)
@@ -688,6 +702,7 @@ public class MinimaxAgent : IAiAgent, IAiStatsProvider
     private static string CardKey(SimCard card)
     {
         return (card.cardName ?? "") + "|" + card.mana + "|" + card.attack + "|" +
-               card.hp + "|" + (card.provoc ? 1 : 0);
+               card.hp + "|" + (card.provoc ? 1 : 0) + "|" + (card.charge ? 1 : 0) +
+               "|" + (card.divineShield ? 1 : 0) + "|" + (card.lifesteal ? 1 : 0);
     }
 }

@@ -898,7 +898,11 @@ MonoBehaviour:
   enemyPlc: {fileID: 310932829}
   ChangeOrderButton: {fileID: 939784655}
   orderKol: 0
-  maxMana: 5
+  maxMana: 10
+  heroMaxHp: 30
+  secondPlayerFirstTurnBonusMana: 1
+  fatigueYou: 0
+  fatigueEnemy: 0
   manaYou: 0
   manaEnemy: 0
   manaYouT: {fileID: 650579653}
@@ -1689,7 +1693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d7cfcc4924beec48aa25a2fda51da49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 30
   Damage: 0
   Mana: 0
   Name: You
@@ -1975,7 +1979,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d7cfcc4924beec48aa25a2fda51da49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 30
   Damage: 0
   Mana: 0
   Name: Enemy
