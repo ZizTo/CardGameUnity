@@ -1,0 +1,4 @@
+Agent1,Agent2,Agent1_Wins,Agent2_Wins,Draws,Agent1_WinRate%,Agent2_WinRate%,Agent1_AvgTime_ms,Agent2_AvgTime_ms,Agent1_Errors,Agent2_Errors
+Rule-Based,Minimax α-β D=2,6,36,8,12,0,72,0,0,0,116,3,0,0
+Rule-Based,MCTS 1000 iter,27,22,1,54,0,44,0,0,0,117,1,0,0
+Minimax α-β D=2,MCTS 1000 iter,42,8,0,84,0,16,0,259,4,130,0,0,0

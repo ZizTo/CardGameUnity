@@ -1357,11 +1357,21 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Easy
+    - m_Text: RB
       m_Image: {fileID: 0}
-    - m_Text: Medium
+    - m_Text: M2
       m_Image: {fileID: 0}
-    - m_Text: Hard
+    - m_Text: Mab2
+      m_Image: {fileID: 0}
+    - m_Text: Mab3
+      m_Image: {fileID: 0}
+    - m_Text: MC100
+      m_Image: {fileID: 0}
+    - m_Text: MC300
+      m_Image: {fileID: 0}
+    - m_Text: MC1000
+      m_Image: {fileID: 0}
+    - m_Text: Quies4
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4183,7 +4193,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Easy
+  m_text: RB
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

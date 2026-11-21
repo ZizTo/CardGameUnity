@@ -71,6 +71,15 @@ public static class AiProfileFactory
         p.quiescenceDepth = 3;
         return p;
     }
+    
+    public static AiProfile QuiescenceNoSort(int depth)
+    {
+        AiProfile p = AlphaBeta(depth);
+        p.useQuiescence = true;
+        p.quiescenceDepth = 3;
+        p.useMoveOrdering = false;
+        return p;
+    }
 
     public static AiProfile QuiescenceTransposition(int depth)
     {

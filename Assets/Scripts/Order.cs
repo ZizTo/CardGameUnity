@@ -59,9 +59,10 @@ private void Awake()
         case 1: enemyAiProfile = new AiProfile(AiType.Minimax, 2, 0, 0, false); break;
         case 2: enemyAiProfile = new AiProfile(AiType.Minimax, 2, 0, 0, true); break;
         case 3: enemyAiProfile = new AiProfile(AiType.Minimax, 3, 0, 0, true); break;
-        case 5: enemyAiProfile = new AiProfile(AiType.Mcts, 0, 100, 4, false); break;
-        case 6: enemyAiProfile = new AiProfile(AiType.Mcts, 0, 300, 6, false); break;
-        case 7: enemyAiProfile = new AiProfile(AiType.Mcts, 0, 1000, 12, false); break;
+        case 4: enemyAiProfile = new AiProfile(AiType.Mcts, 0, 100, 4, false); break;
+        case 5: enemyAiProfile = new AiProfile(AiType.Mcts, 0, 300, 6, false); break;
+        case 6: enemyAiProfile = new AiProfile(AiType.Mcts, 0, 1000, 12, false); break;
+        case 7: enemyAiProfile = AiProfileFactory.QuiescenceNoSort(4);  break;
     }
 
     currentAgent = CreateAgent(enemyAiProfile);
